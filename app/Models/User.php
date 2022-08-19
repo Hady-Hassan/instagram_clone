@@ -41,11 +41,11 @@ class User extends Authenticatable
 
     public function blocked_users()
     {
-        return $this->belongsToMany(User::class, 'user_blocks', 'blocked_user_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_blocks', 'target_id', 'user_id');
     }
 
     public function isBlockedBy(User $user)
     {
-        return $this->blocked_users()->where('blocked_user_id', $user->id)->exists();
+        return $this->blocked_users()->where('target_id', $user->id)->exists();
     }
 }
