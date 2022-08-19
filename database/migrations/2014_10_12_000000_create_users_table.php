@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('bio',500)->nullable();
             $table->string('website',255)->nullable();
             $table->string('avatar',255)->nullable();
-            $table->string('gender',255);
+            $table->enum('gender',['m','f']);
             $table->string('phone',255);
 
             $table->rememberToken();
