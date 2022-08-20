@@ -28,8 +28,6 @@ class UserFactory extends Factory
             'website'=>fake()->url(),
             'gender'=>fake()->randomElement(['m' ,'f']),
             'phone'=>fake()->phoneNumber()
-            
-
         ];
     }
 

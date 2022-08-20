@@ -18,7 +18,7 @@ class CommentFactory extends Factory
     {
         return [
             'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'post_id' => \App\Models\User::inRandomOrder()->first()->id,
+            'post_id' => \App\Models\Post::inRandomOrder()->first()->id,
             'content' => fake()->paragraph()
         ];
     }

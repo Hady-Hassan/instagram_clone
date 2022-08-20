@@ -16,8 +16,20 @@ class MediaFactory extends Factory
      */
     public function definition()
     {
-        return [
-            
-        ];
+        // // if( $faker->randomElement(['v', 'p']) == 'v'){
+        //     $type = 'v';
+        //     $path = $faker->image('public/posts/images',640,480, null, false);
+
+        // // }else{
+        // //     $type = 'p';
+        // //     $path = $faker->image('public/posts/videos',640,480, null, false);
+
+        // // }
+
+        // return [
+        //     'post_id' => \App\Models\Post::inRandomOrder()->first()->id,
+        //     'type' => $type,
+        //     'path' => $path,
+        // ];
     }
 }
