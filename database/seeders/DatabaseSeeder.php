@@ -20,6 +20,16 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Comment::factory(100)->create();
 
+        \App\Models\User_block::factory(20)->create();
+
+        \App\Models\User_follow::factory(300)->create();
+
+        \App\Models\User_post_like::factory(50)->create();
+
+        \App\Models\User_post_save::factory(50)->create();
+
+        \App\Models\User_comment_like::factory(50)->create();
+
 
     }
 }

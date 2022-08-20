@@ -18,6 +18,9 @@ class User_comment_likeFactory extends Factory
     {
         return [
             //
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
+            'comment_id' => \App\Models\Comment::inRandomOrder()->first()->id,
+            
         ];
     }
 }
