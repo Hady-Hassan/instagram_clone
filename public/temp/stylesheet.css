@@ -354,3 +354,12 @@ small {
 .commenting{
   font-size:10px;
 }
+.noHover:active,
+.noHover:focus,
+.noHover:target,
+.noHover:focus-within,
+.noHover:focus-visible,
+.noHover:visited,
+.noHover:hover{
+    border: none;
+}
