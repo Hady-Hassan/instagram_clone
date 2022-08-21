@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./stylesheet.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/icons8-instagram-color-32.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram</title>
+</head>
+
+<body>
+    <header class="d-flex flex-wrap justify-content-center py-2 mb-4 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 ms-lg-5 mb-lg-0 text-dark text-decoration-none">
+                    <img class="logo" src="./assets/7a252de00b20.png" alt="instagram" />
+                </a>
+                <!-- Search -->
+                <form class="col-12 col-lg-auto mb-3 ms-lg-auto mb-lg-0 me-lg-3" role="search">
+                    <input type="search" class="form-control search" placeholder="Search" aria-label="Search" />
+                </form>
+                <!-- End Search -->
+
+                <!-- Menu Items -->
+                <ul class="nav col-12 col-lg-auto me-lg-3 ms-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li>
+                        <a href="#" class="nav-link px-2 link-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-house-door" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <button type="button" data-bs-toggle="modal" class="nav-link px-2 link-dark button"
+                            data-bs-target="#Modal1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+                <!-- End Menu Items -->
+
+                <!-- User -->
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-dark text-decoration-none" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <img src="./assets/no pic.jpg" alt="mdo" width="28" height="28" class="rounded-circle" />
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="#">Profile </a></li>
+                        <li><a class="dropdown-item" href="#">Saved</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="#">Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- End User -->
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="Modal1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="createPost">Create New Post</h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <!-- Slide -->
+                            <div id="first-carousel" class="carousel slide  w-100" data-bs-ride="false">
+                                <div class="first-carousel carousel-inner ">
+
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#first-carousel"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#first-carousel"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- End Slide -->
+                        <div class="row">
+                            <p class="opacity-50 w-100  m-auto mt-3 text-center">
+                                Drag photos and videos here
+                            </p>
+                        </div>
+                        <!-- Post Form -->
+                        <form method="POST" action="#">
+                            <div class="row">
+                                <div class="mt-3 text-center">
+                                    <label class="btn btn-primary opacity-100 w-50  btn-sm">
+                                        Select from computer <input type="file" id="file" hidden multiple>
+                                    </label>
+                                </div>
+                                <div class="mt-3">
+                                    <textarea class="form-control" id="caption" rows="3" name="caption"
+                                        placeholder="Write a caption..."></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Share</button>
+                            </div>
+                        </form>
+                        <!-- End Post Form -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal -->
+    </header>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action " style="padding: 13px;"> Edit
+                        profile</a>
+                    <a href="#" class="list-group-item list-group-item-action active" style="padding: 13px;">Change
+                        Password</a>
+                    <a href="#" class="list-group-item list-group-item-action" style="padding: 13px;">Blocked users</a>
+                </div>
+            </div>
+
+            <div class="col-md-9 px-5">
+                <form class="bg-white border py-4 px-5" method="POST">
+
+                    <div class="mb-4">
+                        <div style="display: inline-block;">
+                            <img class="rounded-circle z-depth-2 mr-2" alt="100x100"
+                                style="max-width: 60px; display: inline-block;"
+                                src="data:image/jpeg;base64,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"
+                                data-holder-rendered="true">
+
+                        </div>
+                        <div class="px-5" style="display: inline-block;">
+                            <h5 type="text" class="text-left " style="display: inline-block;"> Haggag</h5>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="mb-3 row">
+                        <label for="OldPassword" class="col-sm-2 col-form-label  ">Old Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="oldpassword" name="oldpassword">
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="username" class="col-sm-2 col-form-label  ">New Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="newpassword" name="newpassword">
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="username" class="col-sm-2 col-form-label  ">Confrim New Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="confrimnewpassword" name="confirmnewpassword">
+                        </div>
+                    </div>
+
+
+                    <center>
+                        <button class="btn btn-primary fw-bold bg-gradient " href="#" type="submit">
+                            Change Password
+                        </button>
+                        
+                        <div class="my-4">
+                            <a href="#" style="text-decoration: none">Forgot password?</a>
+                          </div>
+                    </center>
+
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
