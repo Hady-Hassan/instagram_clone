@@ -1,0 +1,356 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #fafafa;
+}
+.form-control {
+  border-radius: 2px;
+}
+.form-control:focus {
+  border-color: inherit;
+  box-shadow: none;
+  outline: 0 none;
+}
+.mb-3 a {
+  color: #044c91;
+}
+a {
+  text-decoration: none;
+}
+.m-0 a {
+  font-weight: 700;
+  color: #00abf8;
+}
+label {
+  opacity: 0.5;
+}
+header {
+  background-color: #fff;
+}
+.dropdown-menu li a {
+  color: #000;
+}
+.search {
+  background-color: #efefef;
+  border: none;
+  border-radius: 2px;
+  width: 300px;
+}
+.search:focus {
+  background-color: #efefef;
+}
+.search::placeholder {
+  opacity: 0.8;
+}
+.logo {
+  width: 120px;
+}
+.button {
+  background-color: transparent;
+  border: none;
+}
+small {
+  font-size: 12px;
+}
+.card {
+  border-radius: 2px;
+}
+.card-header {
+  background: #fff;
+  border: none;
+}
+
+#heart-svg {
+  cursor: pointer;
+  overflow: visible;
+  width: 50px;
+}
+
+#heart-svg #heart {
+  transform-origin: center;
+  animation: animateHeartOut 0.3s linear forwards;
+}
+
+#heart-svg #main-circ {
+  transform-origin: 29.5px 29.5px;
+}
+
+.heart {
+  display: none;
+}
+
+.heart:checked + label #heart-svg #heart {
+  transform: scale(0.2);
+  fill: #e2264d;
+  animation: animateHeart 0.3s linear forwards 0.25s;
+}
+
+.heart:checked + label #heart-svg #main-circ {
+  transition: all 2s;
+  animation: animateCircle 0.3s linear forwards;
+  opacity: 1;
+}
+
+.heart:checked + label #heart-svg #heartgroup1 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup1 #heart1 {
+  transform: scale(0) translate(0, -30px);
+  transform-origin: 0 0 0;
+
+  transition: 0.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup1 #heart2 {
+  transform: scale(0) translate(10px, -50px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup2 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup2 #heart1 {
+  transform: scale(0) translate(30px, -15px);
+  transform-origin: 0 0 0;
+
+  transition: 0.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup2 #heart2 {
+  transform: scale(0) translate(60px, -15px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup3 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup3 #heart1 {
+  transform: scale(0) translate(30px, 0px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup3 #heart2 {
+  transform: scale(0) translate(60px, 10px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup4 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup4 #heart1 {
+  transform: scale(0) translate(30px, 15px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup4 #heart2 {
+  transform: scale(0) translate(40px, 50px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup5 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup5 #heart1 {
+  transform: scale(0) translate(-10px, 20px);
+  transform-origin: 0 0 0;
+
+  transition: 0.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup5 #heart2 {
+  transform: scale(0) translate(-60px, 30px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup6 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup6 #heart1 {
+  transform: scale(0) translate(-30px, 0px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup6 #heart2 {
+  transform: scale(0) translate(-60px, -5px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup7 {
+  opacity: 1;
+  transition: 0.1s all 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup7 #heart1 {
+  transform: scale(0) translate(-30px, -15px);
+  transform-origin: 0 0 0;
+  transition: 0.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup7 #heart2 {
+  transform: scale(0) translate(-55px, -30px);
+  transform-origin: 0 0 0;
+  transition: 1.5s transform 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup2 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup3 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup4 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup5 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup6 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+.heart:checked + label #heart-svg #heartgroup7 {
+  opacity: 1;
+  transition: 0.1s opacity 0.3s;
+}
+
+@keyframes animateCircle {
+  40% {
+    transform: scale(10);
+    opacity: 1;
+    fill: #dd4688;
+  }
+  55% {
+    transform: scale(11);
+    opacity: 1;
+    fill: #d46abf;
+  }
+  65% {
+    transform: scale(12);
+    opacity: 1;
+    fill: #cc8ef5;
+  }
+  75% {
+    transform: scale(13);
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0.5;
+  }
+  85% {
+    transform: scale(17);
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0.2;
+  }
+  95% {
+    transform: scale(18);
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0.1;
+  }
+  100% {
+    transform: scale(19);
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0;
+  }
+}
+
+@keyframes animateHeart {
+  0% {
+    transform: scale(0.2);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes animateHeartOut {
+  0% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.saved {
+  display: none;
+}
+
+#saved-svg {
+  width: 25px;
+  cursor: pointer;
+  overflow: visible;
+}
+.saved:checked + label #saved-svg {
+  fill: crimson;
+}
+#comment {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  resize: none;
+  overflow: hidden;
+  padding: 10px;
+  font-size: 14px;
+}
+#comment:focus {
+  border: 1px solid #000;
+}
+#comment:focus::placeholder {
+  opacity: 1;
+}
+#comment::placeholder {
+  opacity: 0.5;
+}
+.view_comments{
+  font-size: 12px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.comment_section
+{
+  display: none;
+}
+.commenting{
+  font-size:10px;
+}
