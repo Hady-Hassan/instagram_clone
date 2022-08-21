@@ -21,7 +21,7 @@ class media extends Seeder
             $media_count = rand(1, 3);
             for ($i = 0; $i < $media_count; $i++) {
 
-                $random = \Storage::files('public/posts/img');
+                $random = \Storage::files('public/posts/images');
                 $path = \Arr::random($random);
 
                 $media = \App\Models\Media::create([
