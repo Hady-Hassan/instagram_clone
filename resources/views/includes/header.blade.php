@@ -109,7 +109,7 @@
             <ul class="dropdown-menu text-small">
               <li><a class="dropdown-item" href="#">Profile </a></li>
               <li><a class="dropdown-item" href="#">Saved</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="{{ROUTE('users.edit')}}">Settings</a></li>
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <form action="{{ROUTE('logout')}}" method="post">
