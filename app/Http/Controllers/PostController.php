@@ -92,4 +92,40 @@ class PostController extends Controller
     {
         //
     }
+
+    public function makeComment(request $request){
+        if(\Request::ajax()){
+
+        if(!isset($request->comment) OR empty($request->comment)){
+            return false;
+        }
+        // check if the user has access to this post (if he is following the author)
+        $users = auth()->user()->following()->pluck('target_id');
+        $post = Post::whereIn('user_id',$users)->where('id',$request->post_id)->get();
+
+
+        
+        if($post == null or empty($post) ){
+            return "Post not found";
+        }else{
+            // insert comment 
+            $insert = Comment::create([
+                'user_id' => auth()->user()->id,
+                'content' => $request->comment,
+                'post_id' => $request->post_id
+            ]);
+            if($insert){
+
+                $content = "<small class='col-12  commenting'> <a href='" . Route('users.show',['user' => $insert->user->username]) . "'> <strong class='me-1'>".$insert->user->username."</strong> </a> ".$insert->content." </small>";
+
+                return json_encode(['message'=>"add success","content"=> $content,"status"=>"success"]);
+            }else{
+                return json_encode(['message'=>"add failed","status"=>"failed"]);
+            }
+
+        }
+        }else{
+            return json_encode(['message'=>"add failed","status"=>"failed"]);
+        }
+    }
 }

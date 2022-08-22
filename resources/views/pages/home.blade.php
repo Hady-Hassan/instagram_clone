@@ -156,7 +156,7 @@
 
           <!-- End Caption -->
           <div class="container-fluid p-0 mt-2 ">
-            <div class="row last_comment_section">
+            <div class="row last_comment_section" id="last_comment_section_{{ $post->id }}">
                 @foreach($post->lastComments as $comment)
                     <small class="col-12  commenting"> <a href="{{ Route('users.show',['user' => $comment->user->username]) }}"> <strong class="me-1">{{$comment->user->username}}</strong> </a> {{$comment->content}}</small>
                 @endforeach
@@ -172,7 +172,7 @@
               <form data-postid="{{ $post->id }}" class="comment_post" name="comment_post" id="comment_post_{{ $post->id }}" method="POST" action="{{ Route('post.make_comment',['user' =>  $post->user->username , 'post' => $post->id  ]) }}">
               <div class="row">
                 <div class="col-10 ">
-                    <textarea cols="40" rows="1" class="form-control" id="comment" placeholder="write your comment.."></textarea>
+                    <textarea cols="40" rows="1" class="form-control" id="comment"  name="comment" placeholder="write your comment.."></textarea>
                 </div>
                 <div class="col-2">
                   <input type="submit" value="POST" class="btn btn-default">

@@ -52,7 +52,7 @@ Route::group(['middleware'=>'auth'],function(){
 
 
     // comments
-    Route::post('/post/comment',[PostController::class,'makeComment'])->where('post', '[0-9]+')->name('post.make_comment');
+    Route::post('/post/comment',[PostController::class,'makeComment'])->name('post.make_comment');
 
     
 });

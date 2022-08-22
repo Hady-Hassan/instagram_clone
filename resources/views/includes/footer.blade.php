@@ -113,20 +113,31 @@
           var form = $(this);
           var action = form.attr('action')
           var post_id = form.data('postid')
-          console.log(form.serialize());
+          var comment_section = $('#last_comment_section_'+post_id);
+          var values  = form.serializeArray();
           $.ajax({
               url: "{{route('post.make_comment')}}",
               type: "POST",
               data: {
                   post_id: post_id,
+                  comment: values[0]['value'],
                   _token: "{{csrf_token()}}"
               },
               success: function(data){
-                  console.log(data);
-                  // $('.comment_section').html(data);
+                data = $.parseJSON(data);
+                
+                status  = data.status;
+                message = data.error;
+                content = data.content;
+                if(status == "success"){
+                  form[0].reset();
+                  comment_section.append(content);
+                }else{
+                  
+                }
               }
           });
-          
+
         });
 
     
