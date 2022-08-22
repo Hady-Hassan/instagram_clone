@@ -36,7 +36,7 @@
                     @csrf
                     <div class="mb-4">
                         <div style="display: inline-block;">
-                            <img class="rounded-circle z-depth-2 mr-2" width="50" height="50" alt="100x100" src="{{ auth()->user()->avatar != null ? \Storage::url(auth()->user()->avatar) : asset('temp/assets/no pic.jpg')}}" data-holder-rendered="true">
+                            <img class="rounded-circle z-depth-2 mr-2" width="70" height="70" style="object-fit:cover ;" alt="100x100" src="{{ auth()->user()->avatar != null ? \Storage::url(auth()->user()->avatar) : asset('temp/assets/no pic.jpg')}}" data-holder-rendered="true">
 
                         </div>
                         <div class="px-5" style="display: inline-block;">

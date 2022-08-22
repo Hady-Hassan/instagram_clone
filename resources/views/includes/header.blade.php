@@ -102,6 +102,7 @@
                 alt="mdo"
                 width="28"
                 height="28"
+                style="object-fit:cover ;"
                 class="rounded-circle"
               />
             </a>

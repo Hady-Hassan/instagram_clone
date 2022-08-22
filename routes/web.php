@@ -44,9 +44,6 @@ Route::group(['middleware'=>'auth'],function(){
     
 
     Route::get('/user/{user}/post/{post}',[PostController::class,'show'])->where('post', '[0-9]+')->name('post.show');
-
-
-    //Route::get('/editpage',[profileController::class,'index'])->name('users.index');
     Route::get('/users/edit', [profileController::class, 'edit'])->where('id', '[0-9]+')->name('users.edit');
     Route::put('/users/update', [profileController::class, 'update'])->where('id', '[0-9]+')->name('users.update');
     
