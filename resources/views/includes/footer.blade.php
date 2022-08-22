@@ -115,7 +115,7 @@
           var post_id = form.data('postid')
           console.log(form.serialize());
           $.ajax({
-              url: "{{route('make_comment')}}",
+              url: "{{route('post.make_comment')}}",
               type: "POST",
               data: {
                   post_id: post_id,
