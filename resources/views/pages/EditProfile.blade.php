@@ -2,29 +2,14 @@
 @section('page_title', 'Edit')
 
 @section('content')
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./stylesheet.css" />
-    <link rel="icon" type="image/x-icon" href="/assets/icons8-instagram-color-32.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Instagram</title>
-</head>
-
-<body>
     <div class="container">
 
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action active" style="padding: 13px;"> Edit
+                    <a href="{{ROUTE('users.edit')}}" class="list-group-item list-group-item-action active" style="padding: 13px;"> Edit
                         profile</a>
-                    <a href="#" class="list-group-item list-group-item-action" style="padding: 13px;">Change
+                    <a href="{{ROUTE('users.editpassword')}}" class="list-group-item list-group-item-action" style="padding: 13px;">Change
                         Password</a>
                     <a href="#" class="list-group-item list-group-item-action" style="padding: 13px;">Blocked users</a>
                 </div>
@@ -153,7 +138,7 @@
         </div>
     </div>
 
-</body>
 
-</html>
+
+
 @endsection

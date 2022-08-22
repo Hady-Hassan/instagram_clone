@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\User;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Mockery\Undefined;
+
 
 class profileController extends Controller
 {
@@ -58,8 +62,13 @@ class profileController extends Controller
      */
     public function edit()
     {
-        $id=auth()->user()->id;
+        $id = auth()->user()->id;
         return view("pages.Editprofile")->with(['user' => User::find($id), 'id' => $id]);
+    }
+    public function editpassword()
+    {
+        $id = auth()->user()->id;
+        return view("pages.changePassword")->with(['user' => User::find($id), 'id' => $id]);
     }
 
     /**
@@ -71,7 +80,7 @@ class profileController extends Controller
      */
     public function update(Request $request)
     {
-        $id=auth()->user()->id;
+        $id = auth()->user()->id;
 
         $name = $request->input('name');
         $fullname = $request->input('fullname');
@@ -82,13 +91,33 @@ class profileController extends Controller
         $gender = $request->input('gender');
 
         if ($request->hasfile('avatar')) {
-            $avatar = $request->file('avatar')->store('posts', 'public');
+            $avatar = $request->file('avatar')->store('users', 'public');
+            User::find($id)->update(['name' => $name, 'fullname' => $fullname, 'username' => $username, 'website' => $website, 'bio' => $bio, 'phonenumber' => $phonenumber, 'gender' => $gender, 'avatar' => $avatar]);
+        } else {
+            User::find($id)->update(['name' => $name, 'fullname' => $fullname, 'username' => $username, 'website' => $website, 'bio' => $bio, 'phonenumber' => $phonenumber, 'gender' => $gender]);
         }
-        User::find($id)->update(['name' => $name, 'fullname' => $fullname , 'username' => $username , 'website' => $website , 'bio' => $bio , 'phonenumber' => $phonenumber  , 'gender' => $gender , 'avatar' => $avatar]);
+
 
         return redirect()->route('users.edit');
     }
 
+    public function updatepassword(Request $request)
+    {
+        $id = auth()->user()->id;
+
+        $oldpassword = $request->input('oldpassword');
+        $newpassword = $request->input('newpassword');
+        $confirmnewpassword = $request->input('confirmnewpassword');
+        if ($newpassword != $confirmnewpassword || !Hash::check($oldpassword, Auth::user()->password)) {
+           return redirect()->back()->withErrors(['error'=>'Update failed, Invalid Data']);
+        }
+        else if ($newpassword == $confirmnewpassword || !Hash::check($oldpassword, Auth::user()->password)) {
+            User::find($id)->update(['password' => bcrypt($newpassword)]);
+            return redirect()->back()->with('success','Password update successfully');
+        }
+
+        return redirect()->route('users.editpassword');
+    }
     /**
      * Remove the specified resource from storage.
      *
