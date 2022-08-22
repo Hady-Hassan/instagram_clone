@@ -42,16 +42,11 @@
         </div>
         <div class="card-body">
           <!-- Slide -->
-          <div id="second-carousel" class="carousel slide  w-100" data-bs-ride="false">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#second-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#second-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            </div>
+          <div id="second-carousel_{{$post->id}}" class="carousel slide  w-100" data-bs-ride="false">
             <div class="second-carousel carousel-inner ">
               <!-- Post Pic/video -->   
 
               @foreach($post->media as $media)
-
                 <div  @class(['carousel-item','active' => $loop->first])>
                         @if($media->type == 'p')
                             <img src="{{ \Storage::url(  $media->Path )   }}" class="col-12 w-100 m-auto"  alt="...">
@@ -63,14 +58,16 @@
                     </div>
                 @endforeach
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#second-carousel" data-bs-slide="prev">
+          @if($post->media->count() !== 1)
+          <button class="carousel-control-prev" type="button" data-bs-target="#second-carousel_{{$post->id}}" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#second-carousel" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#second-carousel_{{$post->id}}" data-bs-slide="next">
             <span class="carousel-control-next-icon"  aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+          @endif
         </div>
         <!-- End Slide -->
         <div class="container-fluid mt-2">
