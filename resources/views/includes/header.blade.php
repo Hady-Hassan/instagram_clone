@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="{{asset('temp/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('temp/css/boostrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('temp/css/stylesheet.css')}}">
+    <link rel="stylesheet" href="{{asset('temp/css/boostrap.min.css')}}">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"

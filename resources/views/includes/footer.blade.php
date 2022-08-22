@@ -104,6 +104,32 @@
         //         }
         //     });
         // }
+
+
+        $('.comment_post').on('submit', function (e) {
+          
+          e.preventDefault();
+          
+          var form = $(this);
+          var action = form.attr('action')
+          var post_id = form.data('postid')
+          console.log(form.serialize());
+          $.ajax({
+              url: "{{route('get_all_comments')}}",
+              type: "POST",
+              data: {
+                  post_id: post_id,
+                  _token: "{{csrf_token()}}"
+              },
+              success: function(data){
+                  console.log(data);
+                  // $('.comment_section').html(data);
+              }
+          });
+          
+        });
+
+    
     </script>
   </body>
 </html>

@@ -168,7 +168,7 @@
             <div class="row">
               <div class="col-12 ">
                 <!-- Comment form -->
-                <form method="POST">
+                <form method="POST" >
                   <textarea cols="40" rows="1" class="form-control" id="comment" placeholder="write your comment.."></textarea>
                 </form>
                 <!-- End Comment Form -->
