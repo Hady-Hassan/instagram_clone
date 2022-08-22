@@ -27,6 +27,26 @@
        
     //   }
 
+    const toggle = (event) =>{
+      
+        const value = event.getAttribute('for');
+        const inputs = document.querySelectorAll('input');
+        for(let i=0; i<inputs.length; i++) {
+          if(inputs[i].getAttribute('value') === value) 
+          {
+            if(inputs[i].checked)
+            {
+              inputs[i].checked = false;
+            }
+            else{
+              inputs[i].checked = true;
+            }
+          }
+    
+        }
+    }  
+
+
 
 
       //Modal Image Handler
