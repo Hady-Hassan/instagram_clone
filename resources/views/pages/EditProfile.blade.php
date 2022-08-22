@@ -22,9 +22,9 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action active" style="padding: 13px;"> Edit
+                    <a href="{{ROUTE('users.edit')}}" class="list-group-item list-group-item-action active" style="padding: 13px;"> Edit
                         profile</a>
-                    <a href="#" class="list-group-item list-group-item-action" style="padding: 13px;">Change
+                    <a href="{{ROUTE('users.editpassword')}}" class="list-group-item list-group-item-action" style="padding: 13px;">Change
                         Password</a>
                     <a href="#" class="list-group-item list-group-item-action" style="padding: 13px;">Blocked users</a>
                 </div>
