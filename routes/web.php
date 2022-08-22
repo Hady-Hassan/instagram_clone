@@ -43,6 +43,9 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::get('/user/{user}/post/{post}',[PostController::class,'show'])->where('post', '[0-9]+')->name('post.show');
 
+
+    // comments
+    Route::post('/user/{user}/post/{post}',[PostController::class,'makeComment'])->where('post', '[0-9]+')->name('post.make_comment');
     
 });
 

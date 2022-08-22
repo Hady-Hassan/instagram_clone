@@ -165,20 +165,21 @@
             <div class="row text-muted view_comments" data-id="{{ $post->id }}" >
              <a class=" my-3 text-muted" href="{{ Route('post.show',['user' =>  $post->user->username , 'post' => $post->id  ]) }}">View all {{ $post->comments->count() }} comments</a>
             </div>
-
             <small class=" my-3 text-muted"> {{ $post->created_at->diffForHumans(); }}</small>
-
           </div>
           <div class="container-fluid p-0 mt-2">
-            <div class="row">
-              <div class="col-12 ">
-                <!-- Comment form -->
-                <form method="POST">
-                  <textarea cols="40" rows="1" class="form-control" id="comment" placeholder="write your comment.."></textarea>
-                </form>
-                <!-- End Comment Form -->
-              </div>
-            </div>
+              <!-- Comment form -->
+              <form data-postid="{{ $post->id }}" class="comment_post" name="comment_post" id="comment_post_{{ $post->id }}" method="POST" action="{{ Route('post.make_comment',['user' =>  $post->user->username , 'post' => $post->id  ]) }}">
+              <div class="row">
+                <div class="col-10 ">
+                    <textarea cols="40" rows="1" class="form-control" id="comment" placeholder="write your comment.."></textarea>
+                </div>
+                <div class="col-2">
+                  <input type="submit" value="POST" class="btn btn-default">
+                </div>
+                </div>
+              </form>
+              <!-- End Comment Form -->
           </div>
         </div>
         </div>
