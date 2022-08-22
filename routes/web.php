@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;  
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,32 +16,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+ 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/users',[UserController::class,'index'])->name('users.index');
-Route::get('/users/create',[UserController::class,'create'])->name('users.create')->middleware(['auth']);
-Route::post('/users',[UserController::class,'store'])->name('users.store')->middleware(['auth']);
 
-Route::get('/users/{user}',[UserController::class,'show'])->where('user', '[0-9]+')->name('users.show');
-Route::get('/users/{user}/edit',[UserController::class,'edit'])->where('user', '[0-9]+')->name('users.edit')->middleware(['auth']);
-Route::put('/users/{user}',[UserController::class,'update'])->where('user', '[0-9]+')->name('users.update')->middleware(['auth']);
-Route::delete('/users/{user}',[UserController::class,'destroy'])->where('user', '[0-9]+')->name('users.destroy')->middleware(['auth']);
+// group middleware auth 
+Route::group(['middleware'=>'auth'],function(){
 
-// Route::get('/posts',[PostController::class,'index'])->name('posts.index');
-// Route::get('/posts/create',[PostController::class,'create'])->name('posts.create')->middleware(['auth']);
-// Route::post('/posts',[PostController::class,'store'])->name('posts.store')->middleware(['auth']);
+    Route::get('/',[HomeController::class,'index'])->name('home');
+    Route::post('get_all_comments',[HomeController::class,'get_all_comments'])->name('get_all_comments');
 
-// Route::get('/posts/{post}',[PostController::class,'show'])->where('post', '[0-9]+')->name('posts.show');
-// Route::get('/posts/{post}/edit',[PostController::class,'edit'])->where('post', '[0-9]+')->name('posts.edit')->middleware(['auth']);
-// Route::put('/posts/{post}',[PostController::class,'update'])->where('post', '[0-9]+')->name('posts.update')->middleware(['auth']);
-// Route::delete('/posts/{post}',[PostController::class,'destroy'])->where('post', '[0-9]+')->name('posts.destroy')->middleware(['auth']);
-// Route::get('/posts/deleted',[PostController::class,'deletepost'])->where('post', '[0-9]+')->name('posts.delete')->middleware(['auth']);
-// Route::post('/posts/deleted/{post}',[PostController::class,'restorepost'])->where('post', '[0-9]+')->name('posts.restore')->middleware(['auth']);
+
+
+    Route::get('/user',[UserController::class,'index'])->name('users.index');
+    Route::get('/user/create',[UserController::class,'create'])->name('users.create')->middleware(['auth']);
+    Route::post('/user',[UserController::class,'store'])->name('users.store')->middleware(['auth']);
+    
+    Route::get('/user/{user}',[UserController::class,'show'])->name('users.show');
+    Route::get('/user/{user}/edit',[UserController::class,'edit'])->where('user', '[0-9]+')->name('users.edit')->middleware(['auth']);
+    Route::put('/user/{user}',[UserController::class,'update'])->where('user', '[0-9]+')->name('users.update')->middleware(['auth']);
+    Route::delete('/user/{user}',[UserController::class,'destroy'])->where('user', '[0-9]+')->name('users.destroy')->middleware(['auth']);
+    
+
+    Route::get('/user/{user}/post/{post}',[PostController::class,'show'])->where('post', '[0-9]+')->name('post.show');
+
+    
+});
 
 require __DIR__.'/auth.php';

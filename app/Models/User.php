@@ -38,6 +38,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function following(){
+        return $this->belongsToMany(User::class,'user_follows','user_id','target_id');
+    }
+
+    public function followers(){
+        return $this->belongsToMany(User::class,'user_follows','target_id','user_id');
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
 
     public function blocked_users()
     {

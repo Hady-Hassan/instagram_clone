@@ -22,6 +22,15 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function lastComments()
+    {
+        return $this->comments()->orderBy('created_at', 'desc')->limit(3);
+    }
+
+    public function media(){
+        return $this->hasMany(Media::class);
+    }
+
     public function likes()
     {
         return $this->hasMany(Post_like::class);
