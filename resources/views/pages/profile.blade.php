@@ -69,7 +69,8 @@
                  </div>
                </div>
              </div>
-              <div style="max-height: 500px;" class="modal fade" id="f2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+             <div style="max-height: 500px;" class="modal fade" id="f2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                  <div class="modal-content">
                    <div class="modal-header text-center">
