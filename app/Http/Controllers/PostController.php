@@ -17,23 +17,22 @@ class PostController extends Controller
         
         // get followed users id
         $users = auth()->user()->following()->pluck('target_id');
-
+        
         // get followed users posts by id
         $posts = Post::whereIn('user_id',$users)->get()->map(function($post){
             $caption = $post['caption'];
             $caption = explode(' ',$caption);
             for($i=0;$i<count($caption);$i++){
                 if(str_contains($caption[$i],"#")){
-                    $caption[$i] = "<a href=".Route('tag.show',['tag'=>$caption[$i]]).">".$caption[$i]."</a>";
+                    $caption[$i] = "<a href=".Route('tag.show',['tag'=>trim($caption[$i],"#")]).">".$caption[$i]."</a>";
                 }
             }
+            
             $caption = implode(' ',$caption);
             $post['caption'] = $caption;
             return $post;
         });
-
-
-        
+   
         return view('pages.home')->with('posts',$posts);
     }
 
