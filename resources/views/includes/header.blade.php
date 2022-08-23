@@ -49,9 +49,6 @@
             />
             <div class="dropdown">
               <ul class="dropdown-menu w-100" id="dropdown-search" aria-labelledby="boxSearch">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </div>
 
@@ -119,7 +116,7 @@
             </a>
             <ul class="dropdown-menu text-small">
               <li><a class="dropdown-item" href="{{Route('users.profile')}}">Profile </a></li>
-              <li><a class="dropdown-item" href="#">Saved</a></li>
+              <li><a class="dropdown-item" href="{{Route('users.profile')}}#saved-tab-pane">Saved</a></li>
               <li><a class="dropdown-item" href="{{ROUTE('users.edit')}}">Settings</a></li>
               <li><hr class="dropdown-divider" /></li>
               <li>

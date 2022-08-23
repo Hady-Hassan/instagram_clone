@@ -166,15 +166,12 @@
                         </div>
                     </div>
                     </div>
-
-                            @endforeach
+                @endforeach
                 </div>
                 </div>
                 </div>
 
-        </div>
-
-        <div class="tab-pane fade" id="saved-tab-pane" role="tabpanel" aria-labelledby="saved-tab" tabindex="0">
+                <div class="tab-pane fade" id="saved-tab-pane" role="tabpanel" aria-labelledby="saved-tab" tabindex="1">
             <div class="container my-1">
 
                 <div class="row">
@@ -201,6 +198,9 @@
                 </div>
                 </div>
         </div>
+        </div>
+
+      
 
       </div>
 
