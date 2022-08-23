@@ -30,7 +30,27 @@
 
 
                     </div>
+                    @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
 
+            @if(session()->has('success'))
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto mt-2">
+                        <div class="alert alert-success">
+                            <p><strong>{{ session()->get('success') }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
                     <div class="mb-3 row">
                         <label for="fname" class="col-sm-2 col-form-label  ">Name</label>
                         <div class="col-sm-10">

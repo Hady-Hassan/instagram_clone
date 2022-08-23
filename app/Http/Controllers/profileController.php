@@ -8,6 +8,7 @@ use Illuminate\Console\View\Components\Alert;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Mockery\Undefined;
+use Illuminate\Validation\Rules;
 
 
 class profileController extends Controller
@@ -80,6 +81,16 @@ class profileController extends Controller
      */
     public function update(Request $request)
     {
+
+        $request->validate([
+            'fullname' =>    ['required', 'string', 'max:255'],
+            'username' =>    ['required', 'string', 'max:255' , 'unique:users,username,'.auth()->user()->id],
+            'website' =>     ['max:255'],
+            'bio' =>         ['max:500'],
+            'phonenumber' => ['required', 'string', 'max:500' ,  'unique:users,phone,'.auth()->user()->id],
+            'gender' =>      ['required', 'boolean'],
+        ]);
+
         $id = auth()->user()->id;
 
         $name = $request->input('name');
@@ -92,17 +103,25 @@ class profileController extends Controller
 
         if ($request->hasfile('avatar')) {
             $avatar = $request->file('avatar')->store('users', 'public');
-            User::find($id)->update(['name' => $name, 'fullname' => $fullname, 'username' => $username, 'website' => $website, 'bio' => $bio, 'phonenumber' => $phonenumber, 'gender' => $gender, 'avatar' => $avatar]);
+          $update =  User::find($id)->update(['name' => $name, 'fullname' => $fullname, 'username' => $username, 'website' => $website, 'bio' => $bio, 'phonenumber' => $phonenumber, 'gender' => $gender, 'avatar' => $avatar]);
         } else {
-            User::find($id)->update(['name' => $name, 'fullname' => $fullname, 'username' => $username, 'website' => $website, 'bio' => $bio, 'phonenumber' => $phonenumber, 'gender' => $gender]);
+            $update =   User::find($id)->update(['name' => $name, 'fullname' => $fullname, 'username' => $username, 'website' => $website, 'bio' => $bio, 'phonenumber' => $phonenumber, 'gender' => $gender]);
         }
 
+        if(!$update){
+            return redirect()->back()->withErrors(['error'=>'Update failed, Invalid Data']);
+        }
 
-        return redirect()->route('users.edit');
+        return redirect()->back()->with('success','Profile updated');
     }
 
     public function updatepassword(Request $request)
     {
+
+        $request->validate([
+            'newpassword' => ['required',  Rules\Password::defaults()],
+        ]);
+        
         $id = auth()->user()->id;
 
         $oldpassword = $request->input('oldpassword');
