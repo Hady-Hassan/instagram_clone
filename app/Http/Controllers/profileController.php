@@ -61,6 +61,12 @@ class profileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function profile()
+    {
+       
+        return view("pages.profile");
+    }
+
     public function edit()
     {
         $id = auth()->user()->id;
@@ -121,7 +127,7 @@ class profileController extends Controller
         $request->validate([
             'newpassword' => ['required',  Rules\Password::defaults()],
         ]);
-        
+
         $id = auth()->user()->id;
 
         $oldpassword = $request->input('oldpassword');

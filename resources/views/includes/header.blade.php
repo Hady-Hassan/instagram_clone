@@ -44,7 +44,7 @@
               class="form-control search"
               placeholder="Search"
               aria-label="Search"
-              id="boxSearch" 
+              id="boxSearch"
               aria-expanded="false"
             />
             <div class="dropdown">
@@ -118,7 +118,7 @@
               />
             </a>
             <ul class="dropdown-menu text-small">
-              <li><a class="dropdown-item" href="#">Profile </a></li>
+              <li><a class="dropdown-item" href="{{Route('users.profile')}}">Profile </a></li>
               <li><a class="dropdown-item" href="#">Saved</a></li>
               <li><a class="dropdown-item" href="{{ROUTE('users.edit')}}">Settings</a></li>
               <li><hr class="dropdown-divider" /></li>
@@ -126,14 +126,14 @@
                 <form action="{{ROUTE('logout')}}" method="post">
                   @csrf
                   <button class="dropdown-item">Log Out</button>
-                </form>                
+                </form>
                 </li>
             </ul>
           </div>
           <!-- End User -->
         </div>
       </div>
-      
+
       <!-- Modal -->
       <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="Modal1" aria-hidden="true">
         <div class="modal-dialog">
@@ -143,12 +143,12 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            
+
                 <div class="row">
                   <!-- Slide -->
                   <div id="first-carousel" class="carousel slide  w-100" data-bs-ride="false">
                     <div class="first-carousel carousel-inner ">
-                 
+
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#first-carousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

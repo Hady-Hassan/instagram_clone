@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\User_follow;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 class Usercontroller extends Controller
 {
 
     function index()
     {
         $users = User::withcount('posts')-> simplepaginate(20);
-        
+
         return view("users.index")->with('users',$users);
 
     }
@@ -29,8 +32,8 @@ class Usercontroller extends Controller
     }
     function show($id)
     {
-    $user =User::where('id', $id)->get()->first(); 
-    $posts = User::find($user['id'])->posts; 
+    $user =User::where('id', $id)->get()->first();
+    $posts = User::find($user['id'])->posts;
     return view("users.show",['user'=>$user,'posts'=>$posts]);
     }
     function edit($id)
@@ -49,7 +52,7 @@ class Usercontroller extends Controller
     function destroy($id)
     {
         $user =User::where('id', $id)->get()->first();
-        User::where('id', $id)->get()->first()->delete(); 
+        User::where('id', $id)->get()->first()->delete();
         return "<h1>Name: ".$user['name']."</h1><br>"."<h1>Email: ".$user['email']."</h1><br> <h2>has been Deleted</h2>";
     }
 
@@ -71,7 +74,7 @@ class Usercontroller extends Controller
                 'created_at'=>Carbon::now()
             ]);
             Mail::to($admin->email)->send(new AdminResetPassword(['data'=>$admin,'token'=>$token]));
-            return redirect()->back()->with('success', 'Reset link is sent to your email address'); 
+            return redirect()->back()->with('success', 'Reset link is sent to your email address');
 
          }else{
             return redirect()->back()->withErrors(['email_is_wrong' => 'passwords.user']);
@@ -100,9 +103,9 @@ class Usercontroller extends Controller
         }
     }
 
-    
+
     function search(Request $request){
-        if($request->ajax()){  
+        if($request->ajax()){
             $search = User::where('username', 'like',"%".$request->keyword."%")->orWhere('fullname', 'like',"%".$request->keyword."%")->limit(10)->get();
 
             if($search->isEmpty()){
@@ -114,5 +117,40 @@ class Usercontroller extends Controller
             return false;
         }
     }
+
+    function removefollow(Request $request){
+
+        if($request->ajax()){
+            $remove = User_follow::where('user_id',$request->userid)->where('target_id' , auth()->user()->id)->delete();
+           
+            if(!$remove){
+                return ['message'=>"empty","status"=>"failed"];
+            }else{
+                return json_encode(['message'=>"delete success","status"=>"success"]);
+            }
+        }else{
+            return false;
+        }
+
+
+    }
+
+    function unfollow(Request $request){
+
+        if($request->ajax()){
+            $remove = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+
+            if(!$remove){
+                return ['message'=>"empty","status"=>"failed"];
+            }else{
+                return json_encode(['message'=>"delete success","status"=>"success"]);
+            }
+        }else{
+            return false;
+        }
+
+
+    }
+
 
 }

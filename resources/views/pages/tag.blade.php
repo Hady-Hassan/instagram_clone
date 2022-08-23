@@ -17,13 +17,13 @@
         <div class="col-md-4 my-5">
             <div class="card  tag_card my-4 m-auto">
                 <div class="card-body">
-                    
+
                     <a href="{{ Route('post.show',['user' =>  $post->user->username , 'post' => $post->id  ]) }}">
                         @if($post->media->first()->type == 'p')
                         <img src="{{ \Storage::url($post->media->first()->Path)   }}" style="max-width:100%"
                             class="col-12 w-100 m-auto" alt="">
                         @else
-                        <video controls class="col-12 w-100 m-auto" tyle="max-width:100%">
+                        <video controls class="col-12 w-100 m-auto" style="max-width:100%">
                             <source src="{{ \Storage::url($post->media->first()->Path)   " type="video/mp4">
                         </video>
                     @endif

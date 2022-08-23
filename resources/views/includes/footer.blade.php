@@ -8,7 +8,7 @@
       const view_comments = document.querySelector(".view_comments");
       const comment_section = document.querySelector(".comment_section");
       const comment_count = document.querySelector(".view_comments").innerText.match(/\d/g).join("");
-      
+
       //Comment Handler
     //   view_comments.onclick = evt =>
     //   {
@@ -25,7 +25,7 @@
     //       evt.target.innerText = `View all ${comment_count} comments..`;
     //       return;
     //     }
-       
+
     //   }
 
     const toggle = (event) =>{
@@ -40,8 +40,8 @@
           save(postid);
         }
         for(let i=0; i<inputs.length; i++) {
-       
-          if(inputs[i].getAttribute('value') === value) 
+
+          if(inputs[i].getAttribute('value') === value)
           {
             if(inputs[i].checked)
             {
@@ -51,9 +51,9 @@
               inputs[i].checked = true;
             }
           }
-    
+
         }
-    }  
+    }
 
 
 
@@ -64,8 +64,8 @@
       let selected = evt.target.files;
          console.log(selected);
          let file = [...selected];
-       
-         
+
+
          for (let i = 0;i < file.length;i++)
          {
           console.log(file[i]);
@@ -78,8 +78,8 @@
                 div.classList.add("active");
               }
               div.innerHTML = `<img src="${URL.createObjectURL(file[i])}" class="col-12 w-100 m-auto"  alt="...">`;
-             List.appendChild(div); 
-         
+             List.appendChild(div);
+
              }
              if(file[i]['type'].match("video/*"))
                 {
@@ -90,13 +90,13 @@
                   div.classList.add("active");
                     }
                   div.innerHTML =`<video class="col-12 w-100 m-auto" controls> <source  src="${URL.createObjectURL(file[i])}" type="${file[i]['type']}" > </video>`;
-              
+
                   List.appendChild(div)
-                } 
+                }
          }
       }
-    
-     
+
+
     </script>
     <script>
         // function get_all_comments(post_id){
@@ -118,9 +118,9 @@
           console.log("works");
         }
         $('.comment_post').on('submit', function (e) {
-          
+
           e.preventDefault();
-          
+
           var form = $(this);
           var action = form.attr('action')
           var post_id = form.data('postid')
@@ -136,7 +136,7 @@
               },
               success: function(data){
                 data = $.parseJSON(data);
-                
+
                 status  = data.status;
                 message = data.error;
                 content = data.content;
@@ -165,8 +165,10 @@
                 message = data.error;
               }
       });
-      
+
     }
+
+
 
     function save(postid){
         $.ajax({
@@ -182,7 +184,46 @@
                   message = data.error;
                 }
         });
-      
+
+    }
+    function removefollow(userid){
+      $.ajax({
+              url: "{{route('users.removefollow')}}",
+              type: "POST",
+              data: {
+                  userid: userid,
+                  _token: "{{csrf_token()}}"
+              },
+              success: function(data){
+                data = $.parseJSON(data);
+                status  = data.status;
+                message = data.error;
+                if(status=='success'){
+                    location.reload();
+                }
+              }
+      });
+
+    }
+    function unfollow(userid){
+      $.ajax({
+              url: "{{route('users.unfollow')}}",
+              type: "POST",
+              data: {
+                  userid: userid,
+                  _token: "{{csrf_token()}}"
+              },
+              success: function(data){
+                data = $.parseJSON(data);
+                status  = data.status;
+                message = data.error;
+
+                if(status=='success'){
+                    location.reload();
+                }
+              }
+      });
+
     }
     </script>
     <script>
@@ -200,7 +241,7 @@
                 },
                 success: function(data){
                   status  = data['status'];
-                  $('#dropdown-search').children().remove(); 
+                  $('#dropdown-search').children().remove();
                   if(status!="failed"){
                     $('#dropdown-search').append(data);
                   }else{
