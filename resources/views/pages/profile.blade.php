@@ -69,7 +69,8 @@
                  </div>
                </div>
              </div>
-              <div style="max-height: 500px;" class="modal fade" id="f2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+             <div style="max-height: 500px;" class="modal fade" id="f2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                  <div class="modal-content">
                    <div class="modal-header text-center">
@@ -108,16 +109,18 @@
              </div>
        </div>
 
-    
-       <div class="row float-start">
-        <b>{{auth()->user()->username}}</b>
-       </div>
-
-       <div class="row float-start">
-           <p style="text-align: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
-           </p>
-           <a class="text-start" href="#">www.google.com</a>
+       <div class="row  float-start">
+            <div class="col-12  text-start">
+                <b>{{auth()->user()->username}}</b>
+            </div>
+            <div class="col-12  text-start">
+                <p style="text-align: left;">{{auth()->user()->bio}}</p>
+            </div>
+            <div class="col-12  text-start">
+                <a class="text-start" href="#">{{auth()->user()->website}}</a>
+            </div>
         </div>
+
         </div>
 </div>
 

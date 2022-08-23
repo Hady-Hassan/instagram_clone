@@ -41,6 +41,8 @@ class Usercontroller extends Controller
         $user =User::where('id', $id)->get()->first() ;
         return view("users.edit")->with('user',$user);
     }
+
+
     function update(Request $request , $id)
     {
     User::find($id)->update(
@@ -122,7 +124,7 @@ class Usercontroller extends Controller
 
         if($request->ajax()){
             $remove = User_follow::where('user_id',$request->userid)->where('target_id' , auth()->user()->id)->delete();
-           
+
             if(!$remove){
                 return ['message'=>"empty","status"=>"failed"];
             }else{
