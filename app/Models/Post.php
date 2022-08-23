@@ -36,7 +36,10 @@ class Post extends Model
         return $this->hasMany(Post_like::class);
     }
     
- 
+    public function saves()
+    {
+        return $this->hasMany(User_post_save::class);
+    }
 
     public function isLiked(){
         return $this->likes()->where('user_id',  auth()->id())->exists();
