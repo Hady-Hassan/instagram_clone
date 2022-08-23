@@ -5,8 +5,10 @@
 
 <div class="container my-4 text-center px-5">
     <div class="row">
-        <div class="col-md-6">
-            <h2>#{{$tag}}</h2>
+        <div class="p-5 bg-light rounded-3">
+        <div class="container-fluid">
+            <h1 class="display-5 fw-bold">#{{$tag}}</h1>
+        </div>
         </div>
     </div>
     <!-- End of Header -->

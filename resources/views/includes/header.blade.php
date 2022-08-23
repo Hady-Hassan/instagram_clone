@@ -43,7 +43,17 @@
               class="form-control search"
               placeholder="Search"
               aria-label="Search"
+              id="boxSearch" 
+              aria-expanded="false"
             />
+            <div class="dropdown">
+              <ul class="dropdown-menu" aria-labelledby="boxSearch">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+
           </form>
           <!-- End Search -->
 
