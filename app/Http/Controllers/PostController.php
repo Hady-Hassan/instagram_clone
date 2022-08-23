@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Media;
+use App\Models\Post_like;
+use App\Models\User_post_save;
 class PostController extends Controller
 {
     /**
@@ -127,5 +129,77 @@ class PostController extends Controller
         }else{
             return json_encode(['message'=>"add failed","status"=>"failed"]);
         }
+    }
+    public function makeLike(request $request){
+        if(\Request::ajax()){
+            // check if the user has access to this post (if he is following the author)
+            $users = auth()->user()->following()->pluck('target_id');
+            $post = Post::whereIn('user_id',$users)->where('id',$request->post_id)->get();
+        
+            if($post == null or empty($post) ){
+                return "Post not found";
+            }else{
+                // check if he already liked this post
+                $check = Post::find($request->post_id)->isLiked();
+                if($check){
+                    $delete = Post_like::where( 'user_id' , auth()->user()->id)->where( 'post_id' , $request->post_id)->delete();
+                    if($delete){
+                        return json_encode(['message'=>"delete success","status"=>"success"]);
+                    }else{
+                        return json_encode(['message'=>"delete failed","status"=>"failed"]);
+                    }
+                }else{
+                    // add like 
+                    $insert = Post_like::create([
+                        'user_id' => auth()->user()->id,
+                        'post_id' => $request->post_id
+                    ]);                
+                    if($insert){
+                        return json_encode(['message'=>"add success","status"=>"success"]);
+                    }else{
+                        return json_encode(['message'=>"add failed","status"=>"failed"]);
+                    }
+                }
+            }
+        }else{
+            return json_encode(['message'=>"add failed","status"=>"failed"]);
+        }  
+    }
+    public function savePost(request $request){
+        if(\Request::ajax()){
+            // check if the user has access to this post (if he is following the author)
+            $users = auth()->user()->following()->pluck('target_id');
+            $post = Post::whereIn('user_id',$users)->where('id',$request->post_id)->get();
+        
+            if($post == null or empty($post) ){
+                return "Post not found";
+            }else{
+
+                    // check if he already saved this post
+                    $check = Post::find($request->post_id)->isSaved();
+                    if($check){
+                        $delete = User_post_save::where( 'user_id' , auth()->user()->id)->where( 'post_id' , $request->post_id)->delete();
+                        if($delete){
+                            return json_encode(['message'=>"delete success","status"=>"success"]);
+                        }else{
+                            return json_encode(['message'=>"delete failed","status"=>"failed"]);
+                        }
+                    }else{
+                        // add like 
+                        $insert = User_post_save::create([
+                            'user_id' => auth()->user()->id,
+                            'post_id' => $request->post_id
+                        ]);                
+                        if($insert){
+                            return json_encode(['message'=>"add success","status"=>"success"]);
+                        }else{
+                            return json_encode(['message'=>"add failed","status"=>"failed"]);
+                        }
+                    }
+
+            }
+        }else{
+            return json_encode(['message'=>"add failed","status"=>"failed"]);
+        }   
     }
 }

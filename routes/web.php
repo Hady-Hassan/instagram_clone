@@ -56,6 +56,10 @@ Route::group(['middleware'=>'auth'],function(){
     // comments
     Route::post('/post/comment',[PostController::class,'makeComment'])->name('post.make_comment');
 
+    //posts 
+    Route::post('/post/like',[PostController::class,'makeLike'])->name('post.make_like');
+    Route::post('/post/save',[PostController::class,'savePost'])->name('post.save_post');
+
     
 });
 
