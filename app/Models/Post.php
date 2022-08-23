@@ -50,9 +50,5 @@ class Post extends Model
         return $this->saves()->where('user_id',  auth()->id())->exists();
     }
 
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
-
+ 
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\profileController;
-
+use App\Http\Controllers\tagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,6 +62,9 @@ Route::group(['middleware'=>'auth'],function(){
 
     // tags
     Route::get('/tag/{tag}',[tagController::class,'show'])->name('tag.show');
+
+    // Search 
+    Route::post('/users/search',[UserController::class,'search'])->name('users.search');
 
     
 });

@@ -184,5 +184,37 @@
       
     }
     </script>
+    <script>
+      // search
+      var searchBox = $('#boxSearch');
+      searchBox.on('keyup',function(e){
+        let keyword = searchBox.val();
+        if( keyword.length >= 3 ){
+           $.ajax({
+                url: "{{route('users.search')}}",
+                type: "POST",
+                data: {
+                    keyword: keyword,
+                    _token: "{{csrf_token()}}"
+                },
+                success: function(data){
+                  status  = data['status'];
+                  $('#dropdown-search').children().remove(); 
+                  if(status!="failed"){
+                    $('#dropdown-search').append(data);
+                  }else{
+                    $('#dropdown-search').append('<center class="text-muted">Nothing found</center>');
+                  }
+                  $('#dropdown-search').show();
+                }
+          });
+        }
+      });
+      searchBox.on('focusout',function(e){
+        if(searchBox.val() == ""){
+          $('#dropdown-search').hide();
+        }
+      });
+</script>
   </body>
 </html>
