@@ -8,6 +8,7 @@
       const view_comments = document.querySelector(".view_comments");
       const comment_section = document.querySelector(".comment_section");
       const comment_count = document.querySelector(".view_comments").innerText.match(/\d/g).join("");
+      
       //Comment Handler
     //   view_comments.onclick = evt =>
     //   {
@@ -28,10 +29,18 @@
     //   }
 
     const toggle = (event) =>{
-      
+
         const value = event.getAttribute('for');
         const inputs = document.querySelectorAll('input');
+        const action   = event.dataset.action;
+        const postid   = event.dataset.postid;
+        if(action == 'like'){
+          like(postid);
+        }else{
+          save(postid);
+        }
         for(let i=0; i<inputs.length; i++) {
+       
           if(inputs[i].getAttribute('value') === value) 
           {
             if(inputs[i].checked)
@@ -105,7 +114,9 @@
         //     });
         // }
 
-
+        function test(){
+          console.log("works");
+        }
         $('.comment_post').on('submit', function (e) {
           
           e.preventDefault();
@@ -133,14 +144,46 @@
                   form[0].reset();
                   comment_section.append(content);
                 }else{
-                  
+
                 }
               }
           });
 
         });
 
-    
+    function like(postid){
+      $.ajax({
+              url: "{{route('post.make_like')}}",
+              type: "POST",
+              data: {
+                  post_id: postid,
+                  _token: "{{csrf_token()}}"
+              },
+              success: function(data){
+                data = $.parseJSON(data);
+                status  = data.status;
+                message = data.error;
+              }
+      });
+      
+    }
+
+    function save(postid){
+        $.ajax({
+                url: "{{route('post.save_post')}}",
+                type: "POST",
+                data: {
+                    post_id: postid,
+                    _token: "{{csrf_token()}}"
+                },
+                success: function(data){
+                  data = $.parseJSON(data);
+                  status  = data.status;
+                  message = data.error;
+                }
+        });
+      
+    }
     </script>
   </body>
 </html>
