@@ -178,18 +178,18 @@
             <div class="container my-1">
 
                 <div class="row">
-                @foreach (auth()->user()->savedposts as $post )
+                @foreach (auth()->user()->savedposts() as $post )
 
                 <div class="col-md-4 ">
                     <div class="card  tag_card my-4 m-auto">
                         <div class="card-body">
-                            <a href="{{ Route('post.show',['user' =>  auth()->user()->username , 'post' => $post->id  ]) }}">
-                            @if($post->media->first()->type == 'p')
-                            <img src="{{ \Storage::url(  $post->media->first()->Path )   }}" style="max-width:100%"
+                            <a href="{{ Route('post.show',['user' =>  auth()->user()->username , 'post' => $post->post->id  ]) }}">
+                            @if($post->post->media->first()->type == 'p')
+                            <img src="{{ \Storage::url(  $post->post->media->first()->Path )   }}" style="max-width:100%"
                                 class="col-12 w-100 m-auto"  alt="...">
                             @else
                                 <video controls class="col-12 w-100 m-auto" style="max-width:100%">
-                                    <source src="{{ \Storage::url(  $post->media->first()->Path )   }}" type="video/mp4">
+                                    <source src="{{ \Storage::url(  $post->post->media->first()->Path )   }}" type="video/mp4">
                                 </video>
                             @endif
                             </a>
