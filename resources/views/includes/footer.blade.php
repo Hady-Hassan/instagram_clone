@@ -7,7 +7,6 @@
       const List = document.querySelector(".first-carousel");
       const view_comments = document.querySelector(".view_comments");
       const comment_section = document.querySelector(".comment_section");
-      const comment_count = document.querySelector(".view_comments").innerText.match(/\d/g).join("");
       
       //Comment Handler
     //   view_comments.onclick = evt =>
@@ -58,13 +57,13 @@
 
 
 
-      //Modal Image Handler
+    //Modal Image Handler
       imgInp.onchange = evt => {
       List.innerHTML = "";
       let selected = evt.target.files;
          console.log(selected);
          let file = [...selected];
-       
+        
          
          for (let i = 0;i < file.length;i++)
          {
