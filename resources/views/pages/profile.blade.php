@@ -109,17 +109,19 @@
              </div>
        </div>
 
-       <div class="row float-start">
-        <b>{{auth()->user()->username}}</b>
-       <div class="col">    <b>{{auth()->user()->username}}</b>
-       </div>
+       <div class="row  float-start">
+            <div class="col-12  text-start">
+                <b>{{auth()->user()->username}}</b>
+            </div>
+            <div class="col-12  text-start">
+                <p style="text-align: left;">{{auth()->user()->bio}}</p>
+            </div>
+            <div class="col-12  text-start">
+                <a class="text-start" href="#">{{auth()->user()->website}}</a>
+            </div>
+        </div>
 
-       </div>
-       <div class="row float-start">
-           <p style="text-align: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
-           </p>
-           <a class="text-start" href="#">www.google.com</a>
-           </div>
+        </div>
 </div>
 
      </div>
@@ -167,15 +169,12 @@
                         </div>
                     </div>
                     </div>
-
-                            @endforeach
+                @endforeach
                 </div>
                 </div>
                 </div>
 
-        </div>
-
-        <div class="tab-pane fade" id="saved-tab-pane" role="tabpanel" aria-labelledby="saved-tab" tabindex="0">
+                <div class="tab-pane fade" id="saved-tab-pane" role="tabpanel" aria-labelledby="saved-tab" tabindex="1">
             <div class="container my-1">
 
                 <div class="row">
@@ -202,6 +201,9 @@
                 </div>
                 </div>
         </div>
+        </div>
+
+      
 
       </div>
 

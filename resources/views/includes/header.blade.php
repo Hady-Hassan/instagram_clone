@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="{{asset('temp/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('temp/css/stylesheet.css')}}">
     <link rel="stylesheet" href="{{asset('temp/css/boostrap.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.29/sweetalert2.min.css">
+    
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -49,9 +52,6 @@
             />
             <div class="dropdown">
               <ul class="dropdown-menu w-100" id="dropdown-search" aria-labelledby="boxSearch">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </div>
 
@@ -119,7 +119,7 @@
             </a>
             <ul class="dropdown-menu text-small">
               <li><a class="dropdown-item" href="{{Route('users.profile')}}">Profile </a></li>
-              <li><a class="dropdown-item" href="#">Saved</a></li>
+              <li><a class="dropdown-item" href="{{Route('users.profile')}}#saved-tab-pane">Saved</a></li>
               <li><a class="dropdown-item" href="{{ROUTE('users.edit')}}">Settings</a></li>
               <li><hr class="dropdown-divider" /></li>
               <li>
