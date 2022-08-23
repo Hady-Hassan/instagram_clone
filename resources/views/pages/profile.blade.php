@@ -108,17 +108,17 @@
              </div>
        </div>
 
+    
        <div class="row float-start">
         <b>{{auth()->user()->username}}</b>
-       <div class="col">    <b>{{auth()->user()->username}}</b>
        </div>
 
-       </div>
        <div class="row float-start">
            <p style="text-align: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
            </p>
            <a class="text-start" href="#">www.google.com</a>
-           </div>
+        </div>
+        </div>
 </div>
 
      </div>
