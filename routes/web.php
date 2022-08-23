@@ -60,6 +60,9 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('/post/like',[PostController::class,'makeLike'])->name('post.make_like');
     Route::post('/post/save',[PostController::class,'savePost'])->name('post.save_post');
 
+    // tags
+    Route::get('/tag/{tag}',[tagController::class,'show'])->name('tag.show');
+
     
 });
 

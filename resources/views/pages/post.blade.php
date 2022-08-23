@@ -149,7 +149,7 @@
           <!-- Caption -->
           <div class="container-fluid p-0">
             <div class="row">
-              <small class="col-12"><strong class="me-1"><b><a href="{{ Route('users.show',['user' => $post->user->username]) }}">{{ $post->user->username }}</a></b> </strong><strong> {{  $post->caption }}</strong></small>
+              <small class="col-12"><strong class="me-1"><b><a href="{{ Route('users.show',['user' => $post->user->username]) }}">{{ $post->user->username }}</a></b> </strong><strong> {!!  $post->caption !!}</strong></small>
             </div>
           </div>
 
