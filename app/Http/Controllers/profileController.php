@@ -63,10 +63,16 @@ class profileController extends Controller
      */
     public function profile()
     {
-       
+
         return view("pages.profile");
     }
 
+    function gprof($id){
+        $user=User::find($id);
+
+        return view("pages.gprof")->with('user' , $user);
+
+    }
     public function edit()
     {
         $id = auth()->user()->id;

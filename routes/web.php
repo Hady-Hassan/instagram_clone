@@ -42,12 +42,14 @@ Route::group(['middleware'=>'auth'],function(){
     // Route::put('/user/{user}',[UserController::class,'update'])->where('user', '[0-9]+')->name('users.update')->middleware(['auth']);
     // Route::delete('/user/{user}',[UserController::class,'destroy'])->where('user', '[0-9]+')->name('users.destroy')->middleware(['auth']);
 
+    Route::get('/users/{id}', [profileController::class, 'gprof'])->where('id', '[0-9]+')->name('users.gprof');
 
     Route::get('/user/{user}/post/{post}',[PostController::class,'show'])->where('post', '[0-9]+')->name('post.show');
 
 
        //Route::get('/editpage',[profileController::class,'index'])->name('users.index');
        Route::get('/users/profile', [profileController::class, 'profile'])->where('id', '[0-9]+')->name('users.profile');
+
        Route::get('/users/edit', [profileController::class, 'edit'])->where('id', '[0-9]+')->name('users.edit');
        Route::put('/users/update', [profileController::class, 'update'])->where('id', '[0-9]+')->name('users.update');
        Route::get('/users/editpassword', [profileController::class, 'editpassword'])->name('users.editpassword');
