@@ -50,6 +50,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Post::class);
     }
 
+    public function savedposts(){
+        return $this->hasMany(User_post_save::class)->get();
+    }
 
     public function blocked_users()
     {
