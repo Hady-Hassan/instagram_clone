@@ -167,7 +167,7 @@
                   </p>
                   </div>
                   <!-- Post Form -->
-                <form method="POST" action="#">
+                <form method="POST" action="{{ROUTE('posts.store')}}" >
                 <div class="row">
                    <div class="mt-3 text-center" >
                   <label class="btn btn-primary opacity-100 w-50  btn-sm">

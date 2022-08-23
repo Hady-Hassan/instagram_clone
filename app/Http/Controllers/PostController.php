@@ -66,7 +66,33 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::create(
+            [
+                'caption' -> $request->input('caption'),
+                'user_id' -> auth()->user()->id,
+            ]
+        );
+        $allowedMimeTypes = ['image/jpeg','image/gif','image/png'];
+
+        foreach ($request-> file('media') as $media) 
+        {
+            $contentType = $media->getClientMimeType();
+            $type;
+            if(! in_array($contentType, $allowedMimeTypes) ){
+            $type = 'v'; 
+            }else{
+            $type = 'p'; 
+            }
+            $media = Media::create([
+                'post_id'-> $post-> id,
+                'path'->$media->store('posts', 'public'),
+                'type'->$type
+                
+            ]);
+        }
+        
+
+        return redirect()->Route('users.edit');
     }
 
     /**
