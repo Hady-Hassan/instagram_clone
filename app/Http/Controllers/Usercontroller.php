@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class Usercontroller extends Controller
 {
 
@@ -99,4 +99,20 @@ class Usercontroller extends Controller
             return redirect(Route('forgot_password'));
         }
     }
+
+    
+    function search(Request $request){
+        if($request->ajax()){  
+            $search = User::where('username', 'like',"%".$request->keyword."%")->orWhere('fullname', 'like',"%".$request->keyword."%")->limit(10)->get();
+
+            if($search->isEmpty()){
+                return ['message'=>"empty","status"=>"failed"];
+            }else{
+                return  view('includes.dropdown_search')->with('users',$search);
+            }
+        }else{
+            return false;
+        }
+    }
+
 }

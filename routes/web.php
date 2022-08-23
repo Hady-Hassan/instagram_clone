@@ -63,6 +63,9 @@ Route::group(['middleware'=>'auth'],function(){
     // tags
     Route::get('/tag/{tag}',[tagController::class,'show'])->name('tag.show');
 
+    // Search 
+    Route::post('/users/search',[UserController::class,'search'])->name('users.search');
+
     
 });
 
