@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\User;
+use App\Models\User_block;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -159,7 +160,23 @@ class profileController extends Controller
     public function blocked(Request $request){
         return view("pages.blocked");
 
-        
+
+    }
+
+    function unblock(Request $request){
+
+        if($request->ajax()){
+            $remove = User_block::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+            if(!$remove){
+                return ['message'=>"empty","status"=>"failed"];
+            }else{
+                return json_encode(['message'=>"delete success","status"=>"success"]);
+            }
+        }else{
+            return false;
+        }
+
+
     }
     /**
      * Remove the specified resource from storage.

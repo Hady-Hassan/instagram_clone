@@ -54,7 +54,7 @@ Route::group(['middleware'=>'auth'],function(){
        Route::put('/users/updatepassword', [profileController::class, 'updatepassword'])->name('users.updatepassword');
        Route::put('/users/editemail', [profileController::class, 'editemail'])->name('users.editemail');
        Route::get('/users/blocked', [profileController::class, 'blocked'])->name('users.blocked');
-       Route::get('/users/showblocked', [profileController::class, 'showblocked'])->name('users.showblocked');
+       Route::post('/users/unblock', [profileController::class, 'unblock'])->name('users.unblock');
 
         //Remove Follow
        Route::post('/users/remove',[UserController::class,'removefollow'])->name('users.removefollow');

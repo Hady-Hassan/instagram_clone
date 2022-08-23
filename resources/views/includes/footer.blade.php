@@ -219,6 +219,28 @@
     });
 
   }
+
+  function unblock(userid) {
+    $.ajax({
+      url: "{{route('users.unblock')}}",
+      type: "POST",
+      data: {
+        userid: userid,
+        _token: "{{csrf_token()}}"
+      },
+      success: function(data) {
+        data = $.parseJSON(data);
+        status = data.status;
+        message = data.error;
+
+        if (status == 'success') {
+          location.reload();
+        }
+      }
+    });
+
+  }
+  
 </script>
 <script>
   // search

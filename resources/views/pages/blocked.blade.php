@@ -13,8 +13,60 @@
         </div>
     </div>
 
+    <div class="col-md-8">
+        <!-- <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Action</th>
 
-   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach( auth()->user()->blocked_users as $user )
+                <tr>
+                    <td>{{$user['id']}}</td>
+                    <td>{{$user['fullname']}}</td>
+                    <td><span>@</span>{{$user['username']}}</td>
+                    <td>
+                        <form method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger"> Unblock </button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table> -->
+
+
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    @foreach( auth()->user()->blocked_users as $user )
+                    <td class="align-middle"> <img src="{{ $user->avatar != null ? \Storage::url($user->avatar) : asset('temp/assets/no pic.jpg')}}" class="rounded-circle " width="60" height="60" style="object-fit:cover ;" alt="Avatar" /></td>
+                    <td class="align-middle">
+                        <h4>{{$user->fullname}}</h4>
+                        <h6 class="text-muted">{{$user->username}}</h6>
+                    </td>
+                    <td class="align-middle ">
+                        <center>
+                            <button class="btn btn-danger fw-bold  bg-gradient " type="submit" onclick="unblock({{$user->id}})">
+                                Unblock
+                            </button>
+                        </center>
+                    </td>
+                </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+
+    </div>
+
+
 </div>
 
 @endsection
