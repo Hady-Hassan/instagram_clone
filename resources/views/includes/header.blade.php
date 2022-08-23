@@ -167,11 +167,12 @@
                   </p>
                   </div>
                   <!-- Post Form -->
-                <form method="POST" action="{{ROUTE('posts.store')}}" >
+                <form method="POST" action="{{ROUTE('posts.store')}}" enctype="multipart/form-data">
+                  @csrf
                 <div class="row">
                    <div class="mt-3 text-center" >
                   <label class="btn btn-primary opacity-100 w-50  btn-sm">
-                    Select from computer <input type="file" id="file" hidden multiple>
+                    Select from computer <input type="file" id="file" name="media[]" multiple>
                   </label>
                 </div>
                 <div class="mt-3">

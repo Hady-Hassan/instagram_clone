@@ -68,8 +68,8 @@ class PostController extends Controller
     {
         $post = Post::create(
             [
-                'caption' -> $request->input('caption'),
-                'user_id' -> auth()->user()->id,
+                'caption' => $request->caption,
+                'user_id' => auth()->user()->id,
             ]
         );
         $allowedMimeTypes = ['image/jpeg','image/gif','image/png'];
@@ -84,15 +84,15 @@ class PostController extends Controller
             $type = 'p'; 
             }
             $media = Media::create([
-                'post_id'-> $post-> id,
-                'path'->$media->store('posts', 'public'),
-                'type'->$type
+                'post_id'=> $post-> id,
+                'Path'=>$media->store('posts/images', 'public'),
+                'type'=>$type
                 
             ]);
         }
         
 
-        return redirect()->Route('users.edit');
+        return redirect()->Route('users.profile');
     }
 
     /**
