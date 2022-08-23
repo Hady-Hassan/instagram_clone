@@ -28,8 +28,8 @@ Route::get('/dashboard', function () {
 // group middleware auth 
 Route::group(['middleware'=>'auth'],function(){
 
-    Route::get('/',[HomeController::class,'index'])->name('home');
-    Route::post('get_all_comments',[HomeController::class,'get_all_comments'])->name('get_all_comments');
+    Route::get('/',[PostController::class,'index'])->name('home');
+    Route::post('get_all_comments',[PostController::class,'get_all_comments'])->name('get_all_comments');
 
 
 
