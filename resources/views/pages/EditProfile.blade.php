@@ -12,7 +12,7 @@
                     profile</a>
                 <a href="{{ROUTE('users.editpassword')}}" class="list-group-item list-group-item-action" style="padding: 13px;">Change
                     Password</a>
-                <a href="#" class="list-group-item list-group-item-action" style="padding: 13px;">Blocked users</a>
+                <a href="{{ROUTE('users.blocked')}}" class="list-group-item list-group-item-action" style="padding: 13px;">Blocked users</a>
             </div>
         </div>
 

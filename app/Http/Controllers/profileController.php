@@ -155,6 +155,12 @@ class profileController extends Controller
         User::find($id)->update(['email' => $email]);
         return redirect()->back()->with('success', 'Email update successfully');
     }
+
+    public function blocked(Request $request){
+        return view("pages.blocked");
+
+        
+    }
     /**
      * Remove the specified resource from storage.
      *
