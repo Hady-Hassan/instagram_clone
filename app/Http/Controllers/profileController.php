@@ -162,7 +162,7 @@ class profileController extends Controller
         return view("pages.blocked");
 
 
-<<<<<<< HEAD
+
     }
 
     function unblock(Request $request){
@@ -179,8 +179,7 @@ class profileController extends Controller
         }
 
 
-=======
->>>>>>> addd302ade70e30b636395223714d3f5f3f921a6
+
     }
     /**
      * Remove the specified resource from storage.
