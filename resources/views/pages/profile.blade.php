@@ -108,7 +108,6 @@
              </div>
        </div>
 
-    
        <div class="row  float-start">
             <div class="col-12  text-start">
                 <b>{{auth()->user()->username}}</b>
