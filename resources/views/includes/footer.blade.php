@@ -58,7 +58,7 @@
 
 
 
-      //Modal Image Handler
+    //Modal Image Handler
       imgInp.onchange = evt => {
       List.innerHTML = "";
       let selected = evt.target.files;

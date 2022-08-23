@@ -385,3 +385,22 @@ small {
     padding: 5px;
     object-fit: contain;
 }
+.card-body::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+  }
+  
+  .liked {
+   display: none;
+  }
+  
+  #like-svg {
+    width: 25px;
+    cursor: pointer;
+    overflow: visible;
+  }
+  .liked:checked + label #like-svg {
+    fill: crimson;
+   
+  }
+  

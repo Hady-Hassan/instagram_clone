@@ -63,7 +63,7 @@
             class="nav col-12 col-lg-auto me-lg-3 ms-lg-auto mb-2 justify-content-center mb-md-0"
           >
             <li>
-              <a href="#" class="nav-link px-2 link-dark">
+              <a href="/" class="nav-link px-2 link-dark">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
