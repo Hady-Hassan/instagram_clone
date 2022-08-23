@@ -18,9 +18,21 @@
        <div class="row float-start ">
            <ul class="list-inline ">
                <li class="list-inline-item me-3" ><h2 class="pt-4">{{$user->fullname}}</h2></li>
-               <li class="list-inline-item me-3"><a href="{{Route('users.edit')}}" class="btn btn-primary" style="color: white"><b>Follow</b></a></li>
 
-           </ul>
+               @if(auth()->user()->isFollowing($user) )
+               <form class="list-inline-item me-3" method="POST" action="{{Route('users.unfollow')}}">
+                @csrf
+               <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>UnFollow</b></button></li>
+               <input type="hidden" name="userid" value="{{ $user->id }}" />
+            </form>
+               @else
+               <form class="list-inline-item me-3" method="POST" action="{{Route('users.follow')}}">
+                @csrf
+                 <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>Follow</b></button></li>
+               <input type="hidden" name="userid" value="{{ $user->id }}" />
+            </form>
+                @endif
+            </ul>
 
        </div>
        <div class="row float-start"  >
@@ -34,7 +46,7 @@
 
        <div class="row float-start">
         <b>{{$user->username}}</b>
-       <div class="col">    <b>{{$user->username}}</b>
+       <div class="col float-start">    <b>{{$user->username}}</b>
        </div>
 
        </div>

@@ -18,6 +18,13 @@ class Usercontroller extends Controller
 
     }
 
+    function gprof($username){
+        $user=User::where('username' , $username)->get()->first();
+
+        return view("pages.gprof")->with('user' , $user);
+
+    }
+
     function create()
     {
         return view("users.create");
@@ -148,11 +155,47 @@ class Usercontroller extends Controller
                 return json_encode(['message'=>"delete success","status"=>"success"]);
             }
         }else{
-            return false;
+            $remove = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+
+            if(!$remove){
+                return redirect()->back();
+            }else{
+                return redirect()->back();
+            }
+
         }
 
 
+
+
     }
+
+    function follow(Request $request){
+
+        if($request->ajax()){
+            $remove = User_follow::create([  'user_id' => auth()->user()->id  , 'target_id' => $request->userid]);
+
+            if(!$remove){
+                return ['message'=>"empty","status"=>"failed"];
+            }else{
+                return json_encode(['message'=>"delete success","status"=>"success"]);
+            }
+        }else{
+            $remove = User_follow::create([  'user_id' => auth()->user()->id  , 'target_id' => $request->userid]);
+
+            if(!$remove){
+                return redirect()->back();
+            }else{
+                return redirect()->back();
+            }
+
+        }
+
+
+
+
+    }
+
 
 
 }

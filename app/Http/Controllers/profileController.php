@@ -66,12 +66,7 @@ class profileController extends Controller
         return view("pages.profile");
     }
 
-    function gprof($id){
-        $user=User::find($id);
-
-        return view("pages.gprof")->with('user' , $user);
-
-    }
+  
     public function edit()
     {
         $id = auth()->user()->id;
@@ -150,7 +145,7 @@ class profileController extends Controller
 
     public function editemail(Request $request)
     {
-        
+
         //$user=auth()->user()->hasVerifiedEmail();
 
         $request->validate([
@@ -165,7 +160,7 @@ class profileController extends Controller
     public function blocked(Request $request){
         return view("pages.blocked");
 
-        
+
     }
     /**
      * Remove the specified resource from storage.
