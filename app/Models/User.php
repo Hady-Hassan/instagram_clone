@@ -63,4 +63,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->blocked_users()->where('target_id', $user->id)->exists();
     }
+
+    public function isFollowing(User $user)
+    {
+        return $this->following()->where('target_id', $user->id)->exists();
+    }
+
 }
