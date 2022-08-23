@@ -401,6 +401,5 @@ small {
   }
   .liked:checked + label #like-svg {
     fill: crimson;
-   
   }
   
