@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User_follow::factory(300)->create();
 
-        \App\Models\User_post_like::factory(50)->create();
+        \App\Models\Post_like::factory(50)->create();
 
         \App\Models\User_post_save::factory(50)->create();
 
