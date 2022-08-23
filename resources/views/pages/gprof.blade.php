@@ -45,23 +45,79 @@
 
 
        <div class="row float-start">
-        <b>{{$user->username}}</b>
-       <div class="col float-start">    <b>{{$user->username}}</b>
-       </div>
+            <div class="col-12  text-start">
+                <b>{{$user->username}}</b>
+            </div>
 
-       </div>
-       <div class="row float-start">
-           <p style="text-align: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
-           </p>
-           <a class="text-start" href="#">www.google.com</a>
-           </div>
+       
+       <div class="col-12  text-start">
+        <p style="text-align: left;">{{$user->bio}}</p>
+    </div>
+    <div class="col-12  text-start">
+        <a class="text-start" href="#">{{$user->website}}</a>
+    </div>
 </div>
 
      </div>
     </div>
    </div>
    <!-- End of Header -->
+   @if(auth()->user()->isFollowing($user) )
 
+   <div class="container mt-4">
+    <div class="row ">
+        <ul class="nav nav-tabs w-100 justify-content-center ">
+            <li class="nav-item ">
+              <a class="nav-link active text-decoration-none text-reset"" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true" href="#"><i class="fa-solid fa-border-all "></i><span class="px-2">Posts</span></a>
+            </li>
+
+
+
+          </ul>
+
+    </div>
+
+ </div>
+
+     </div>
+     <div class="tab-content" id="myTabContent">
+         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+             <div class="container my-1">
+
+                 <div class="row">
+                 @foreach ($user->posts as $post )
+                 <div class="col-md-4 ">
+                     <div class="card  tag_card my-4 m-auto">
+                         <div class="card-body">
+                             <a href="{{ Route('post.show',['user' =>  $user->username , 'post' => $post->id  ]) }}">
+                             @if($post->media->first()->type == 'p')
+                             <img src="{{ \Storage::url(  $post->media->first()->Path )   }}" style="max-width:100%"
+                                 class="col-12 w-100 m-auto"  alt="...">
+                             @else
+                                 <video controls class="col-12 w-100 m-auto" style="max-width:100%">
+                                     <source src="{{ \Storage::url(  $post->media->first()->Path )   }}" type="video/mp4">
+                                 </video>
+                             @endif
+                             </a>
+                         </div>
+                     </div>
+                     </div>
+                 @endforeach
+                 </div>
+                 </div>
+                 </div>
+
+
+
+
+
+
+
+       </div>
+
+ </div>
+
+   @endif
 
 
 
