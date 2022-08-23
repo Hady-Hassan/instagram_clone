@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="{{asset('temp/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('temp/css/stylesheet.css')}}">
     <link rel="stylesheet" href="{{asset('temp/css/boostrap.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.29/sweetalert2.min.css">
+    
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"

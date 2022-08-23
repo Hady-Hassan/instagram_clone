@@ -46,12 +46,13 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/user/{user}/post/{post}',[PostController::class,'show'])->where('post', '[0-9]+')->name('post.show');
 
 
-       //Route::get('/editpage',[profileController::class,'index'])->name('users.index');
+       //Routes of editProfile
        Route::get('/users/profile', [profileController::class, 'profile'])->where('id', '[0-9]+')->name('users.profile');
        Route::get('/users/edit', [profileController::class, 'edit'])->where('id', '[0-9]+')->name('users.edit');
        Route::put('/users/update', [profileController::class, 'update'])->where('id', '[0-9]+')->name('users.update');
        Route::get('/users/editpassword', [profileController::class, 'editpassword'])->name('users.editpassword');
        Route::put('/users/updatepassword', [profileController::class, 'updatepassword'])->name('users.updatepassword');
+       Route::put('/users/editemail', [profileController::class, 'editemail'])->name('users.editemail');
 
         //Remove Follow
        Route::post('/users/remove',[UserController::class,'removefollow'])->name('users.removefollow');

@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\User;
-use Illuminate\Console\View\Components\Alert;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Mockery\Undefined;
 use Illuminate\Validation\Rules;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 
 class profileController extends Controller
@@ -63,7 +62,7 @@ class profileController extends Controller
      */
     public function profile()
     {
-       
+
         return view("pages.profile");
     }
 
@@ -90,11 +89,11 @@ class profileController extends Controller
 
         $request->validate([
             'fullname' =>    ['required', 'string', 'max:255'],
-            'username' =>    ['required', 'string', 'max:255' , 'unique:users,username,'.auth()->user()->id],
+            'username' =>    ['required', 'string', 'max:255', 'unique:users,username,' . auth()->user()->id],
             'website' =>     ['max:255'],
             'bio' =>         ['max:500'],
-            'phonenumber' => ['required', 'string', 'max:500' ,  'unique:users,phone,'.auth()->user()->id],
-            'gender' =>      ['required', 'boolean'],
+            'phonenumber' => ['required', 'string', 'max:500',  'unique:users,phone,' . auth()->user()->id],
+            'gender' =>      ['required'],
         ]);
 
         $id = auth()->user()->id;
@@ -109,16 +108,16 @@ class profileController extends Controller
 
         if ($request->hasfile('avatar')) {
             $avatar = $request->file('avatar')->store('users', 'public');
-          $update =  User::find($id)->update(['name' => $name, 'fullname' => $fullname, 'username' => $username, 'website' => $website, 'bio' => $bio, 'phonenumber' => $phonenumber, 'gender' => $gender, 'avatar' => $avatar]);
+            $update =  User::find($id)->update(['name' => $name, 'fullname' => $fullname, 'username' => $username, 'website' => $website, 'bio' => $bio, 'phonenumber' => $phonenumber, 'gender' => $gender, 'avatar' => $avatar]);
         } else {
             $update =   User::find($id)->update(['name' => $name, 'fullname' => $fullname, 'username' => $username, 'website' => $website, 'bio' => $bio, 'phonenumber' => $phonenumber, 'gender' => $gender]);
         }
 
-        if(!$update){
-            return redirect()->back()->withErrors(['error'=>'Update failed, Invalid Data']);
+        if (!$update) {
+            return redirect()->back()->withErrors(['error' => 'Update failed, Invalid Data']);
         }
 
-        return redirect()->back()->with('success','Profile updated');
+        return redirect()->back()->with('success', 'Profile updated');
     }
 
     public function updatepassword(Request $request)
@@ -134,14 +133,27 @@ class profileController extends Controller
         $newpassword = $request->input('newpassword');
         $confirmnewpassword = $request->input('confirmnewpassword');
         if ($newpassword != $confirmnewpassword || !Hash::check($oldpassword, Auth::user()->password)) {
-           return redirect()->back()->withErrors(['error'=>'Update failed, Invalid Data']);
-        }
-        else if ($newpassword == $confirmnewpassword || !Hash::check($oldpassword, Auth::user()->password)) {
+            return redirect()->back()->withErrors(['error' => 'Update failed, Invalid Data']);
+        } else if ($newpassword == $confirmnewpassword || !Hash::check($oldpassword, Auth::user()->password)) {
             User::find($id)->update(['password' => bcrypt($newpassword)]);
-            return redirect()->back()->with('success','Password update successfully');
+            return redirect()->back()->with('success', 'Password update successfully');
         }
 
         return redirect()->route('users.editpassword');
+    }
+
+    public function editemail(Request $request)
+    {
+        
+        //$user=auth()->user()->hasVerifiedEmail();
+
+        $request->validate([
+            'email' => ['required', 'string','email',  'max:255', 'unique:users,email,'. auth()->user()->id ],
+        ]);
+        $id = auth()->user()->id;
+        $email = $request->input('email');
+        User::find($id)->update(['email' => $email]);
+        return redirect()->back()->with('success', 'Email update successfully');
     }
     /**
      * Remove the specified resource from storage.
