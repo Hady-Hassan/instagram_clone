@@ -172,7 +172,7 @@
                 <div class="row">
                    <div class="mt-3 text-center" >
                   <label class="btn btn-primary opacity-100 w-50  btn-sm">
-                    Select from computer <input type="file" id="file" name="media[]" multiple>
+                    Select from computer <input type="file" id="file" name="media[]" multiple required>
                   </label>
                 </div>
                 <div class="mt-3">
