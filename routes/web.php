@@ -59,6 +59,8 @@ Route::group(['middleware'=>'auth'],function(){
        Route::get('/users/blocked', [profileController::class, 'blocked'])->name('users.blocked');
        Route::post('/users/unblock', [profileController::class, 'unblock'])->name('users.unblock');
 
+       Route::POST('/users/request_email_validation', [profileController::class, 'request_email_validation'])->name('users.request_email_validation');
+
         //Remove Follow
        Route::post('/users/remove',[UserController::class,'removefollow'])->name('users.removefollow');
 

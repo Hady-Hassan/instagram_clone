@@ -153,7 +153,8 @@
             <center>
                 @if($user->email_verified_at == null)
                 <div class="col-sm-2">
-                    <form method="post">
+                    <form method="post" action="{{ Route('users.request_email_validation') }}">
+                        @csrf
                         <button class="btn btn-primary fw-bold bg-gradient" href="#" type="submit">
                             Verify
                         </button>

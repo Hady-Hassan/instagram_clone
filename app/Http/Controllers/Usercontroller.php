@@ -160,7 +160,7 @@ class Usercontroller extends Controller
             if(!$remove){
                 return redirect()->back();
             }else{
-                return redirect()->route('home');
+                return redirect()->back();
             }
 
         }

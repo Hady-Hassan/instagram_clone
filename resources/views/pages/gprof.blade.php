@@ -46,21 +46,21 @@
                <li class="list-inline-item me-5"><button class="btn noHover" data-bs-toggle="modal" data-bs-target="#f2"><span class="list-inline-item"><b>{{$user->following->count()}}</b></span> following</button></li>
 
            </ul>
+           </div>
 
-
-       <div class="row float-start">
+           <div class="row  float-start">
             <div class="col-12  text-start">
-                <b>{{$user->username}}</b>
+                <b>{{auth()->user()->username}}</b>
             </div>
+            <div class="col-12  text-start">
+                <p style="text-align: left;">{{auth()->user()->bio}}</p>
+            </div>
+            <div class="col-12  text-start">
+                <a class="text-start" href="#">{{auth()->user()->website}}</a>
+            </div>
+        </div>
 
 
-       <div class="col-12  text-start">
-        <p style="text-align: left;">{{$user->bio}}</p>
-    </div>
-    <div class="col-12  text-start">
-        <a class="text-start" href="#">{{$user->website}}</a>
-    </div>
-</div>
 
      </div>
     </div>

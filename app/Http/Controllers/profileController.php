@@ -160,7 +160,6 @@ class profileController extends Controller
         if( $update ){
             $user->email_verified_at = null;
             $user->save();
-            auth()->user()->sendEmailVerificationNotification();
             return redirect()->back()->with('success', 'Email update successfully');
         }else{
             return redirect()->back();
@@ -199,5 +198,10 @@ class profileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function request_email_validation(){
+        $send  = auth()->user()->sendEmailVerificationNotification();
+        return redirect()->back()->with('success', 'A verification link will be sent to your email now !');
     }
 }
