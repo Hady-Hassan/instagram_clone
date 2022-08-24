@@ -117,7 +117,7 @@
                 <p style="text-align: left;">{{auth()->user()->bio}}</p>
             </div>
             <div class="col-12  text-start">
-                <a class="text-start" href="#">{{auth()->user()->website}}</a>
+                <a class="text-start" href="{{auth()->user()->website}}">{{auth()->user()->website}}</a>
             </div>
         </div>
 
