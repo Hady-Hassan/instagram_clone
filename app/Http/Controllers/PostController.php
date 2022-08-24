@@ -89,6 +89,10 @@ class PostController extends Controller
                 'type'=>$type
                 
             ]);
+            if(!$media){
+                $post->delete();
+                return redirect()->back();
+            }
         }
         
 
@@ -194,6 +198,7 @@ class PostController extends Controller
     }
     public function makeLike(request $request){
         if(\Request::ajax()){
+            
             // check if the user has access to this post (if he is following the author)
             $users = auth()->user()->following()->pluck('target_id');
             $post = Post::whereIn('user_id',$users)->where('id',$request->post_id)->get();
@@ -229,6 +234,8 @@ class PostController extends Controller
     }
     public function savePost(request $request){
         if(\Request::ajax()){
+
+            
             // check if the user has access to this post (if he is following the author)
             $users = auth()->user()->following()->pluck('target_id');
             $post = Post::whereIn('user_id',$users)->where('id',$request->post_id)->get();
