@@ -127,17 +127,13 @@
         _token: "{{csrf_token()}}"
       },
       success: function(data) {
-        data = $.parseJSON(data);
-
-        status = data.status;
-        message = data.error;
-        content = data.content;
-        if (status == "success") {
+        status = data['status'];
+        if (status != "failed") {
           form[0].reset();
-          comment_section.append(content);
-        } else {
-
-        }
+          comment_section.append(data);
+          comment_section.animate({ scrollTop:comment_section.prop("scrollHeight")},"slow");
+          }
+        
       }
     });
 

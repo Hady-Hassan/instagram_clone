@@ -59,13 +59,27 @@
                         <div class="row ">
                           <!-- Username -->
                           <small class="col-4 my-auto"  style="font-size:18px; font-weight: 500;font-weight:500;">{{$post->user->username}}</small>
-                          <button class="col-2 btn btn-primary" style="border-radius: 5px;">Follow</button>
+                          <div class="col-2" >
+                          @if(auth()->user()->isFollowing($post->user) )
+                          <form class="list-inline-item me-3" method="POST" action="{{Route('users.unfollow')}}">
+                            @csrf
+                          <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>UnFollow</b></button></li>
+                          <input type="hidden" name="userid" value="{{ $post->user->id }}" />
+                        </form>
+                          @else
+                          <form class="list-inline-item me-3" method="POST" action="{{Route('users.follow')}}">
+                            @csrf
+                            <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>Follow</b></button></li>
+                          <input type="hidden" name="userid" value="{{ $post->user->id }}" />
+                        </form>
+                @endif
+                </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-body p-0" style="height:400px ; overflow-y: scroll;">
+                <div class="card-body p-0" style="height:400px ; overflow-y: scroll;" id="last_comment_section_{{$post->id}}">
                   <!-- Caption -->
                   <div class="container-fluid  mb-3 pb-1 sticky-top" style="background-color:#fff;border-bottom:1px solid #ccc;">
                     <div class="row p-2">

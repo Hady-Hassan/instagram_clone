@@ -169,9 +169,11 @@ class PostController extends Controller
                 'post_id' => $request->post_id
             ]);
             if($insert){
-
+                if($request->type){
                 $content = "<small class='col-12  commenting'> <a href='" . Route('users.show',['user' => $insert->user->username]) . "'> <strong class='me-1'>".$insert->user->username."</strong> </a> ".$insert->content." </small>";
-
+            }else {
+                return view('includes.comments_post')->with('comment',$insert);
+             }
                 return json_encode(['message'=>"add success","content"=> $content,"status"=>"success"]);
             }else{
                 return json_encode(['message'=>"add failed","status"=>"failed"]);
