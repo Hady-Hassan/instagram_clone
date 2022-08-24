@@ -25,6 +25,10 @@
                <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>UnFollow</b></button></li>
                <input type="hidden" name="userid" value="{{ $user->id }}" />
             </form>
+            @elseif (auth()->user()->isBlockedBy($user))
+            <button class="btn btn-danger fw-bold  bg-gradient " type="submit" onclick="unblock({{$user->id}})">
+                Unblock
+            </button>
                @else
                <form class="list-inline-item me-3" method="POST" action="{{Route('users.follow')}}">
                 @csrf
@@ -49,7 +53,7 @@
                 <b>{{$user->username}}</b>
             </div>
 
-       
+
        <div class="col-12  text-start">
         <p style="text-align: left;">{{$user->bio}}</p>
     </div>
