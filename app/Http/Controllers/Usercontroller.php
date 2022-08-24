@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\User_follow;
+use App\Models\User_block;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,9 +21,12 @@ class Usercontroller extends Controller
 
     function gprof($username){
         $user=User::where('username' , $username)->get()->first();
-
+        if(! $user->isBlockedBy(auth()->user())){
         return view("pages.gprof")->with('user' , $user);
-
+        }
+        else {
+            return redirect()->route('home');
+        }
     }
 
     function create()
@@ -194,8 +198,32 @@ class Usercontroller extends Controller
 
 
 
+
     }
 
+    function block(Request $request){
 
+        if($request->ajax()){
+            $remove = User_block::create([  'user_id' => auth()->user()->id  , 'target_id' => $request->userid]);
+            $rem = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+            $re = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+
+            if(!$remove){
+                return ['message'=>"empty","status"=>"failed"];
+            }else{
+                return json_encode(['message'=>"delete success","status"=>"success"]);
+            }
+        }else{
+            $remove = User_block::create([  'user_id' => auth()->user()->id  , 'target_id' => $request->userid]);
+            $rem = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+            $re = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+            if(!$remove){
+                return redirect()->back();
+            }else{
+                return redirect()->back();
+            }
+
+        }
+    }
 
 }

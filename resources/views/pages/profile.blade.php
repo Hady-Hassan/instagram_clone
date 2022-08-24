@@ -49,8 +49,8 @@
                                    <td class="align-middle"> <img src="{{ $user->avatar != null ? \Storage::url($user->avatar) : asset('temp/assets/no pic.jpg')}}"
                                            class="rounded-circle "  width="60" height="60" style="object-fit:cover ;" alt="Avatar" /></td>
                                    <td class="align-middle">
-                                        <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h4>{{$user->fullname}}</h4></a> 
-                                        <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h6 class="text-muted">{{$user->username}}</h6></a> 
+                                        <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h4>{{$user->fullname}}</h4></a>
+                                        <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h6 class="text-muted">{{$user->username}}</h6></a>
                                    </td>
                                    <td class="align-middle ">
                                        <center><button class="btn btn-primary fw-bold  bg-gradient " onclick="removefollow({{$user->id}})"
@@ -87,8 +87,8 @@
                                    <td class="align-middle"> <img src="{{ $user->avatar != null ? \Storage::url($user->avatar) : asset('temp/assets/no pic.jpg')}}"
                                            class="rounded-circle "  width="60" height="60" style="object-fit:cover ;" alt="Avatar" /></td>
                                            <td class="align-middle">
-                                           <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h4>{{$user->fullname}}</h4></a> 
-                                           <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h6 class="text-muted">{{$user->username}}</h6></a> 
+                                           <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h4>{{$user->fullname}}</h4></a>
+                                           <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h6 class="text-muted">{{$user->username}}</h6></a>
                                         </td>
                                    <td class="align-middle ">
                                        <center><button class="btn btn-primary fw-bold  bg-gradient " href="#" onclick="unfollow({{$user->id}})"
@@ -110,9 +110,9 @@
        </div>
 
        <div class="row  float-start">
-            <div class="col-12  text-start">
-                <b>{{auth()->user()->username}}</b>
-            </div>
+        <div class="col-12  text-start">
+            <b>{{auth()->user()->username}}</b>
+        </div>
             <div class="col-12  text-start">
                 <p style="text-align: left;">{{auth()->user()->bio}}</p>
             </div>
@@ -203,7 +203,7 @@
         </div>
         </div>
 
-      
+
 
       </div>
 

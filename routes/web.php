@@ -57,7 +57,10 @@ Route::group(['middleware'=>'auth'],function(){
        Route::put('/users/updatepassword', [profileController::class, 'updatepassword'])->name('users.updatepassword');
        Route::put('/users/editemail', [profileController::class, 'editemail'])->name('users.editemail');
        Route::get('/users/blocked', [profileController::class, 'blocked'])->name('users.blocked');
+
+       // Block & UnBlock
        Route::post('/users/unblock', [profileController::class, 'unblock'])->name('users.unblock');
+       Route::post('/users/block', [UserController::class, 'block'])->name('users.block');
 
        Route::POST('/users/request_email_validation', [profileController::class, 'request_email_validation'])->name('users.request_email_validation');
 

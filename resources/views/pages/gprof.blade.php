@@ -36,6 +36,35 @@
                <input type="hidden" name="userid" value="{{ $user->id }}" />
             </form>
                 @endif
+
+                <li class="list-inline-item me-3"><button style="border: none; background-color: white" data-bs-toggle="modal" data-bs-target="#f2"><svg  xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+</svg></button></li>
+
+<div style="max-height: 800px;" class="modal fade" id="f2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-body">
+            <div class="list-group">
+                <form method="POST" action="{{Route('users.block')}}">
+                    @csrf
+                <button type="submit" class="list-group-item list-group-item-action" ><span style="color: red">Block</span></button>
+                <input type="hidden" name="userid" value="{{ $user->id }}" />
+            </form>
+                <button type="button" class="list-group-item list-group-item-action"><span style="color: red">Report</span></button>
+                <button type="button" class="list-group-item list-group-item-action" data-bs-dismiss="modal">Cancel</button>
+
+              </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
             </ul>
 
        </div>
@@ -50,13 +79,13 @@
 
            <div class="row  float-start">
             <div class="col-12  text-start">
-                <b>{{auth()->user()->username}}</b>
+                <b>{{$user->username}}</b>
             </div>
             <div class="col-12  text-start">
-                <p style="text-align: left;">{{auth()->user()->bio}}</p>
+                <p style="text-align: left;">{{$user->bio}}</p>
             </div>
             <div class="col-12  text-start">
-                <a class="text-start" href="{{auth()->user()->website}}">{{auth()->user()->website}}</a>
+                <a class="text-start" href="{{$user->website}}">{{$user->website}}</a>
             </div>
         </div>
 

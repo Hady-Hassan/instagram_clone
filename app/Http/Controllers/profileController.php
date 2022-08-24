@@ -67,7 +67,7 @@ class profileController extends Controller
         return view("pages.profile");
     }
 
-  
+
     public function edit()
     {
         $id = auth()->user()->id;
@@ -156,7 +156,7 @@ class profileController extends Controller
         $id = auth()->user()->id;
         $email = $request->input('email');
         $update = $user->update(['email' => $email,'email_verified_at'=> " "]);
-        
+
         if( $update ){
             $user->email_verified_at = null;
             $user->save();
@@ -189,6 +189,7 @@ class profileController extends Controller
 
 
     }
+
     /**
      * Remove the specified resource from storage.
      *
