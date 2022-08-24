@@ -101,16 +101,24 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($user_id,$post_id)
+    public function show($username,$post)
     {
+        $user = User::where('username',$username)->first();
         // get followed users id
-        $users = auth()->user()->following()->pluck('target_id');
+        $hasAccess = auth()->user()->isFollowing($user);
+            if($hasAccess || $user->id == auth()->user()->id){
+                // get the post by id   
+            $post = Post::where('user_id',$user->id)->where('id',$post)->get()->first();
+            
+            if($post){
+                return view('pages.post')->with('post',$post);
+            }else{
+                return redirect()->back();
+            }
 
-        // get the post by id   
-        $post = Post::whereIn('user_id',$users)->where('id',$post_id)->get()->first();
-
-        return view('pages.post')->with('post',$post);
-        
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**

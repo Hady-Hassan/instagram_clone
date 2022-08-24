@@ -60,19 +60,22 @@
                           <!-- Username -->
                           <small class="col-4 my-auto"  style="font-size:18px; font-weight: 500;font-weight:500;">{{$post->user->username}}</small>
                           <div class="col-2" >
-                          @if(auth()->user()->isFollowing($post->user) )
-                          <form class="list-inline-item me-3" method="POST" action="{{Route('users.unfollow')}}">
-                            @csrf
-                          <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>UnFollow</b></button></li>
-                          <input type="hidden" name="userid" value="{{ $post->user->id }}" />
-                        </form>
-                          @else
-                          <form class="list-inline-item me-3" method="POST" action="{{Route('users.follow')}}">
-                            @csrf
-                            <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>Follow</b></button></li>
-                          <input type="hidden" name="userid" value="{{ $post->user->id }}" />
-                        </form>
-                @endif
+                          @if(auth()->user()->id != $post->user->id)
+                                @if(auth()->user()->isFollowing($post->user))
+                                <form class="list-inline-item me-3" method="POST" action="{{Route('users.unfollow')}}">
+                                  @csrf
+                                <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>UnFollow</b></button></li>
+                                <input type="hidden" name="userid" value="{{ $post->user->id }}" />
+                              </form>
+                                @else
+                                <form class="list-inline-item me-3" method="POST" action="{{Route('users.follow')}}">
+                                  @csrf
+                                  <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>Follow</b></button></li>
+                                <input type="hidden" name="userid" value="{{ $post->user->id }}" />
+                              </form>
+                                @endif
+                          @endif
+                          
                 </div>
                         </div>
                       </div>
