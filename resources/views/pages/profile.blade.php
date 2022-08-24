@@ -59,6 +59,18 @@
                                            </button>
                                        </center>
                                    </td>
+                                   <td> @if (auth()->user()->isBlockedBy($user))
+                                    <button class="btn btn-danger fw-bold  bg-gradient " type="submit" onclick="unblock({{$user->id}})">
+                                        Unblock
+                                    </button>
+                                    @else
+                                    <form method="POST" action="{{Route('users.block')}}">
+                                        @csrf
+
+                                    <button type="submit" class="list-group-item list-group-item-action" ><span style="color: red">Block</span></button>
+                                    <input type="hidden" name="userid" value="{{ $user->id }}" />
+                                    @endif
+                                </td>
                                </tr>
                                @endforeach
 
