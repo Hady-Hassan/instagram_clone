@@ -29,6 +29,19 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    public function sendEmailVerificationNotification()
+    {
+        //dispactches the job to the queue passing it this User object
+        \App\Jobs\send_email_verification::dispatch($this);
+    }
+
+    // public function sendPasswordResetNotification(string $token): void
+    // {
+
+    //     //dispactches the job to the queue passing it this User object
+    //     \App\Jobs\forgot_password::dispatch($this);
+    // }
+
     /**
      * The attributes that should be cast.
      *

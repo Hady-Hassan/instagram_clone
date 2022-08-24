@@ -15,7 +15,11 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+Route::get('send/message',function(){
+   $job =  \App\Jobs\SendMailJob::dispatch();
 
+    return "test send message";
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])

@@ -148,14 +148,23 @@ class profileController extends Controller
     {
 
         //$user=auth()->user()->hasVerifiedEmail();
+        $user = auth()->user();
 
         $request->validate([
             'email' => ['required', 'string','email',  'max:255', 'unique:users,email,'. auth()->user()->id ],
         ]);
         $id = auth()->user()->id;
         $email = $request->input('email');
-        User::find($id)->update(['email' => $email]);
-        return redirect()->back()->with('success', 'Email update successfully');
+        $update = $user->update(['email' => $email,'email_verified_at'=> " "]);
+        
+        if( $update ){
+            $user->email_verified_at = null;
+            $user->save();
+            auth()->user()->sendEmailVerificationNotification();
+            return redirect()->back()->with('success', 'Email update successfully');
+        }else{
+            return redirect()->back();
+        }
     }
 
     public function blocked(Request $request){
