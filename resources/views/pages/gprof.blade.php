@@ -47,11 +47,18 @@
 
         <div class="modal-body">
             <div class="list-group">
-                <form method="POST" action="{{Route('users.block')}}">
-                    @csrf
-                <button type="submit" class="list-group-item list-group-item-action" ><span style="color: red">Block</span></button>
-                <input type="hidden" name="userid" value="{{ $user->id }}" />
-            </form>
+                @if (auth()->user()->isBlockedBy($user))
+
+
+                <button type="submit" class="list-group-item list-group-item-action" onclick="unblock({{$user->id}})"><span style="color: red">UnBlock</span></button>
+            @else
+            <form method="POST" action="{{Route('users.block')}}">
+                @csrf
+
+            <button type="submit" class="list-group-item list-group-item-action" ><span style="color: red">Block</span></button>
+            <input type="hidden" name="userid" value="{{ $user->id }}" />
+
+        @endif
                 <button type="button" class="list-group-item list-group-item-action"><span style="color: red">Report</span></button>
                 <button type="button" class="list-group-item list-group-item-action" data-bs-dismiss="modal">Cancel</button>
 
