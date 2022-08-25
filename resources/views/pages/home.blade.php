@@ -160,7 +160,7 @@
             </div>
             
             <div class="row text-muted view_comments" data-id="{{ $post->id }}" >
-             <a class=" my-3 text-muted" href="{{ Route('post.show',['user' =>  $post->user->username , 'post' => $post->id  ]) }}">View all {{ $post->comments->count() }} comments</a>
+             <a class=" my-3 text-muted" href="{{ Route('post.show',['user' =>  $post->user->username , 'post' => $post->id  ]) }}">View all comments</a>
             </div>
             <small class=" my-3 text-muted"> {{ $post->created_at->diffForHumans(); }}</small>
           </div>
