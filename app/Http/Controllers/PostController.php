@@ -174,7 +174,7 @@ class PostController extends Controller
         if(auth()->user()->id==$post->user_id)
         {
             $update =  Post::find($id)->update(['caption'=>$request->caption]);
-            return view('pages.post')->with('post',$post);
+            return redirect()->route('post.show',['post'=>$post,'user'=>$post->user->username]);
         }
     }
 
