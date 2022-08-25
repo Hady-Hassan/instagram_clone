@@ -3,12 +3,14 @@
 
 we are doing an Instagram clone for ITI Trainning
 
+with (BONUS)
+
 
 ## Installation
 
 write this codes in the terminal to run the project 
 
-make sure to turn SQL on and have a database called `instagram`
+make sure to turn SQL (Xampp || Wampp) on and have a database called `instagram`
 
 ```bash
     composer install
