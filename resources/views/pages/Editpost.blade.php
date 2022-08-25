@@ -17,8 +17,8 @@
                         @if($media->type == 'p')
                             <img src="{{ \Storage::url(  $media->Path )   }}" class="col-12" style="height:650px;" alt="...">
                         @else
-                            <video controls class="col-12 h-100">
-                                <source src="{{ \Storage::url(  $media->Path )   }}" style="height:650px;" type="video/mp4">
+                            <video controls class="col-12" style="height:650px;margin:auto;">
+                                <source src="{{ \Storage::url(  $media->Path )   }}"  type="video/mp4">
                             </video>
                         @endif
                     </div>

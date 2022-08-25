@@ -362,9 +362,19 @@ small {
 .noHover:hover {
     border: none;
 }
-.carousel img {
+.carousel-first img {
     min-width: 100%;
     height: 500px;
+    max-width: none;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    padding: 5px;
+    object-fit: contain;
+}
+.carousel-header img {
+    min-width: 100%;
+    height: 300px;
     max-width: none;
     background: #f9f9f9;
     border: 1px solid #e0e0e0;

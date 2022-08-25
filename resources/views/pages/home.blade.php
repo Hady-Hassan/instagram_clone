@@ -42,7 +42,7 @@
         </div>
         <div class="card-body">
           <!-- Slide -->
-          <div id="second-carousel_{{$post->id}}" class="carousel slide  w-100" data-bs-ride="false">
+          <div id="second-carousel_{{$post->id}}" class="carousel carousel-first slide  w-100" data-bs-ride="false">
             <div class="second-carousel carousel-inner ">
               <!-- Post Pic/video -->   
 

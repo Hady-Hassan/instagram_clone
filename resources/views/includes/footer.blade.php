@@ -64,9 +64,16 @@
     console.log(selected);
     let file = [...selected];
 
-
+    if(file.length === 1) {
+      document.querySelector('.carousel-control-prev').style.display= "none";
+      document.querySelector('.carousel-control-next').style.display= "none";
+    }
+    else{
+      document.querySelector('.carousel-control-prev').style.display= "block";
+      document.querySelector('.carousel-control-next').style.display= "block";
+    }
     for (let i = 0; i < file.length; i++) {
-      console.log(file[i]);
+      // console.log(file[i]);
       if (file[i]['type'].match("image/*")) {
         div = document.createElement("div");
         div.classList.add("carousel-item");
