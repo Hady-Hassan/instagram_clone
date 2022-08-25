@@ -15,8 +15,8 @@
                         @if($media->type == 'p')
                             <img src="{{ \Storage::url(  $media->Path )   }}" class="col-12" style="height:650px;" alt="...">
                         @else
-                            <video controls class="col-12 h-100">
-                                <source src="{{ \Storage::url(  $media->Path )   }}" style="height:650px;" type="video/mp4">
+                            <video controls class="col-12" style="height:650px;margin:auto;">
+                                <source src="{{ \Storage::url(  $media->Path )   }}"  type="video/mp4">
                             </video>
                         @endif
                     </div>
@@ -46,19 +46,22 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        <img
+                      <a href="{{ Route('users.show',['user' => $post->user->username]) }}">
+                      <img
                           src="{{   $post->user->avatar  != null ? \Storage::url(  $post->user->avatar ) : asset('temp/assets/no pic.jpg')}}"
                           alt="mdo"
                           width="42"
                           height="42"
                           class="rounded-circle"
+                          style="object-fit:cover ;"
                         />
+                      </a>
                       </a>
                       </div>
                       <div class="col-11 m-auto">
                         <div class="row ">
                           <!-- Username -->
-                          <small class="col-4 my-auto"  style="font-size:18px; font-weight: 500;font-weight:500;">{{$post->user->username}}</small>
+                          <a class="col-4 my-auto" href="{{ Route('users.show',['user' => $post->user->username]) }}"><small   style="font-size:18px; font-weight: 500;font-weight:500;">{{$post->user->username}}</small></a>
                           <div class="col-2" >
                           @if(auth()->user()->id != $post->user->id)
                                 @if(auth()->user()->isFollowing($post->user))
@@ -105,6 +108,8 @@
                           width="42"
                           height="42"
                           class="rounded-circle"
+                          style="object-fit:cover ;"
+                          
                         />
                       </a>
                       </div>
@@ -122,7 +127,7 @@
                       </div>
                     </div>
                     <div class="row text-muted mb-2">
-                      <div class="col-2 ms-auto">{{ $post->created_at->diffForHumans(); }}</div>
+                      <div class="col-2 ms-auto" style="font-size: 14px">{{ $post->created_at->diffForHumans(); }}</div>
                     </div>
                       </div>
                       <!-- End Caption -->
@@ -140,19 +145,22 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
+                      <a href="{{ Route('users.show',['user' => $comment->user->username]) }}">
                         <img
                         src="{{  $comment->user->avatar  != null ? \Storage::url(  $comment->user->avatar ) : asset('temp/assets/no pic.jpg')}}"
                           alt="mdo"
                           width="42"
                           height="42"
                           class="rounded-circle"
+                          style="object-fit:cover ;"
                         />
+                        </a>
                       </a>
                       </div>
                       <div class="col-11 m-auto">
                         <div class="row ">
                           <!-- Username -->
-                          <small class="col-11 my-auto"  style="font-size:18px; font-weight: 500;font-weight:500;">{{$comment->user->username}}</small>
+                          <a class="col-11 my-auto" href="{{ Route('users.show',['user' => $comment->user->username]) }}"><small   style="font-size:18px; font-weight: 500;font-weight:500;">{{$comment->user->username}}</small></a>
                           <form action="POST" class="col-1 mt-auto">
                           <input type="checkbox" class="liked" name="like" id="comment_{{$comment->id}}" />
                           <label for="comment_{{$comment->id}}" class="col-1 opacity-100" >
