@@ -53,22 +53,20 @@
                                         <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h6 class="text-muted">{{$user->username}}</h6></a>
                                    </td>
                                    <td class="align-middle ">
-                                       <center><button class="btn btn-primary fw-bold  bg-gradient " onclick="removefollow({{$user->id}})"
+                                       <center>
+
+                                        <button class="btn btn-primary fw-bold  bg-gradient " onclick="removefollow({{$user->id}})"
                                                type="submit">
                                            Remove
                                            </button>
 
-                                    @if (auth()->user()->isBlockedBy($user))
-                                    <button class="btn btn-danger fw-bold  bg-gradient " type="submit" onclick="unblock({{$user->id}})">
-                                        Unblock
-                                    </button>
-                                    @else
+
                                     <form method="POST" action="{{Route('users.block')}}">
                                         @csrf
 
                                     <button type="submit" class="btn btn-danger fw-bold  bg-gradient " ><span>Block</span></button>
-                                    <input type="hidden" name="userid" value="{{ $user->id }}" />
-                                    @endif
+                                    <input type="hidden" name="userid" value="{{$user->id }}" />
+
                                 </center>
                             </td>
                                </tr>
@@ -107,6 +105,13 @@
                                                type="submit">
                                            Unfollow
                                            </button>
+
+                                           <form method="POST" action="{{Route('users.block')}}">
+                                               @csrf
+
+                                           <button type="submit" class="btn btn-danger fw-bold  bg-gradient " ><span>Block</span></button>
+                                           <input type="hidden" name="userid" value="{{$user->id }}" />
+                                           
                                        </center>
                                    </td>
                                </tr>
