@@ -32,16 +32,16 @@ class DatabaseSeeder extends Seeder
 
         //Mohammed Hesham account
         \App\Models\User::create([
-            'fullname' =>'Hady Hassan' ,
-            'username' =>'Hady_Hassan' ,
-            'email' => 'hadyhassn5@gmail.com',
+            'fullname' =>'Mohamed Hesham' ,
+            'username' =>'RaidenShurikens' ,
+            'email' => 'moohisham2000@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt(1234), // password
             
-            'bio'=>'',
+            'bio'=>'WUT',
             'website'=>'',
             'gender'=>'m',
-            'phone'=> '01284630902'
+            'phone'=> '01062845966'
          ]);
 
         //Ahmed Hagag account
