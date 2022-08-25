@@ -14,21 +14,89 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(150)->create();
-        \App\Models\Post::factory(30)->create();
+        //hady hassan account
+        \App\Models\User::create([
+            'fullname' =>'Hady Hassan' ,
+            'username' =>'Hady_Hassan' ,
+            'email' => 'hadyhassn5@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt(1234), // password
+            'remember_token' => Str::random(10),
+            'bio'=>'',
+            'website'=>'',
+            'gender'=>'m',
+            'phone'=> '01284630902'
+        ]);
+
+        //Mohammed Hesham account
+        \App\Models\User::create([
+            'fullname' =>'Hady Hassan' ,
+            'username' =>'Hady_Hassan' ,
+            'email' => 'hadyhassn5@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt(1234), // password
+            'remember_token' => Str::random(10),
+            'bio'=>'',
+            'website'=>'',
+            'gender'=>'m',
+            'phone'=> '01284630902'
+         ]);
+
+        //Ahmed Hagag account
+        \App\Models\User::create([
+            'fullname' =>'Hady Hassan' ,
+            'username' =>'Hady_Hassan' ,
+            'email' => 'hadyhassn5@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt(1234), // password
+            'remember_token' => Str::random(10),
+            'bio'=>'',
+            'website'=>'',
+            'gender'=>'m',
+            'phone'=> '01284630902'
+        ]);         
+        //Omar Abd El fatah account
+        \App\Models\User::create([
+            'fullname' =>'Hady Hassan' ,
+            'username' =>'Hady_Hassan' ,
+            'email' => 'hadyhassn5@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt(1234), // password
+            'remember_token' => Str::random(10),
+            'bio'=>'',
+            'website'=>'',
+            'gender'=>'m',
+            'phone'=> '01284630902'
+         ]);
+
+        //Abd alrahman Ahmed account
+        \App\Models\User::create([
+            'fullname' =>'Hady Hassan' ,
+            'username' =>'Hady_Hassan' ,
+            'email' => 'hadyhassn5@gmail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt(1234), // password
+            'remember_token' => Str::random(10),
+            'bio'=>'',
+            'website'=>'',
+            'gender'=>'m',
+            'phone'=> '01284630902'
+         ]); 
+        \App\Models\User::factory(200)->create();
+        \App\Models\Post::factory(2000)->create();
         $this->call(media::class);
 
-        \App\Models\Comment::factory(100)->create();
+        \App\Models\Comment::factory(2500)->create();
 
-        \App\Models\User_block::factory(20)->create();
+        \App\Models\User_block::factory(100)->create();
 
-        \App\Models\User_follow::factory(300)->create();
+        \App\Models\User_follow::factory(500)->create();
 
-        \App\Models\Post_like::factory(50)->create();
+        \App\Models\Post_like::factory(4000)->create();
 
-        \App\Models\User_post_save::factory(50)->create();
+        \App\Models\User_post_save::factory(250)->create();
 
-        \App\Models\User_comment_like::factory(50)->create();
+        \App\Models\User_comment_like::factory(500)->create();
 
 
     }
