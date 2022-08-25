@@ -153,6 +153,14 @@ class Usercontroller extends Controller
         if($request->ajax()){
             $remove = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
             
+            $posts = auth()->user()->savedposts()->filter(function($post) use($request){
+                return $post->post->user_id == $request->userid;
+            });
+            foreach($posts as $post){
+                $post->delete();
+            }
+
+
             if(!$remove){
                 return ['message'=>"empty","status"=>"failed"];
             }else{
@@ -160,6 +168,13 @@ class Usercontroller extends Controller
             }
         }else{
             $remove = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+            
+            $posts = auth()->user()->savedposts()->filter(function($post) use($request){
+                return $post->post->user_id == $request->userid;
+            });
+            foreach($posts as $post){
+                $post->delete();
+            }
 
             if(!$remove){
                 return redirect()->back();
@@ -208,6 +223,12 @@ class Usercontroller extends Controller
             $rem = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
             $re = User_follow::where('user_id',$request->userid)->where('target_id' , auth()->user()->id)->delete();
 
+            $posts = auth()->user()->savedposts()->filter(function($post) use($request){
+                return $post->post->user_id == $request->userid;
+            });
+            foreach($posts as $post){
+                $post->delete();
+            }
 
 
             if(!$remove){
