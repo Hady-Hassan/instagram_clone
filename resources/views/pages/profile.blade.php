@@ -7,8 +7,7 @@
     <div class="row">
        <div class="col-md-8 mx-auto">
            <div class="row">
-     <div class="col-md-4 text-right px-3 d-flex flex-wrap align-items-center
-     ">
+     <div class="col-md-4 text-right px-3 d-flex flex-wrap align-items-center">
        <img class="rounded-circle z-depth-2 mr-2 mx-3 align-middle"  alt="100x100"
        width="150" height="150" style="object-fit:cover ;"
                                src="{{ auth()->user()->avatar != null ? \Storage::url(auth()->user()->avatar) : asset('temp/assets/no pic.jpg')}}"
@@ -60,7 +59,8 @@
                                            Remove
                                            </button>
 
-
+                                        </td>
+                                        <td class="align-middle ">
                                     <form method="POST" action="{{Route('users.block')}}">
                                         @csrf
 
@@ -105,7 +105,8 @@
                                                type="submit">
                                            Unfollow
                                            </button>
-
+                                        </td>
+                                        <td class="align-middle ">
                                            <form method="POST" action="{{Route('users.block')}}">
                                                @csrf
 
@@ -113,7 +114,7 @@
                                            <input type="hidden" name="userid" value="{{$user->id }}" />
 
                                        </center>
-                                   </td>
+                                    </td>
                                </tr>
                                @endforeach
 
@@ -150,7 +151,7 @@
    <div class="row ">
        <ul class="nav nav-tabs w-100 justify-content-center ">
            <li class="nav-item ">
-             <a class="nav-link active text-decoration-none text-reset"" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true" href="#"><i class="fa-solid fa-border-all "></i><span class="px-2">Posts</span></a>
+             <a class="nav-link active text-decoration-none text-reset" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true" href="#"><i class="fa-solid fa-border-all "></i><span class="px-2">Posts</span></a>
            </li>
 
            <li class="nav-item ">
@@ -200,7 +201,7 @@
                 <div class="col-md-4 ">
                     <div class="card  tag_card my-4 m-auto">
                         <div class="card-body">
-                            <a href="{{ Route('post.show',['user' =>  $post->post->user->username , 'post' => $post->post->id  ]) }}">
+                            <a href="{{ Route('post.show',['user' => $post->user->username, 'post' => $post->post->id  ]) }}">
                             @if($post->post->media->first()->type == 'p')
                             <img src="{{ \Storage::url(  $post->post->media->first()->Path )   }}" style="max-width:100%"
                                 class="col-12 w-100 m-auto"  alt="...">
