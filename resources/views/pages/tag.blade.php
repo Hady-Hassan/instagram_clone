@@ -24,7 +24,7 @@
                             class="col-12 w-100 m-auto" alt="">
                         @else
                         <video controls class="col-12 w-100 m-auto" style="max-width:100%">
-                            <source src="{{ \Storage::url($post->media->first()->Path)   " type="video/mp4">
+                            <source src="{{ \Storage::url($post->media->first()->Path) }}  " type="video/mp4">
                         </video>
                     @endif
                     </a>
