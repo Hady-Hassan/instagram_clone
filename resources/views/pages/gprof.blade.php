@@ -22,7 +22,7 @@
                @if(auth()->user()->isFollowing($user) )
                <form class="list-inline-item me-3" method="POST" action="{{Route('users.unfollow')}}">
                 @csrf
-               <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>UnFollow</b></button></li>
+               <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>Unfollow</b></button></li>
                <input type="hidden" name="userid" value="{{ $user->id }}" />
             </form>
             @elseif (auth()->user()->isBlockedBy($user))
@@ -32,7 +32,7 @@
             @elseif ($user->isFollowing(auth()->user()))
             <form class="list-inline-item me-3" method="POST" action="{{Route('users.follow')}}">
                 @csrf
-                 <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>FollowBack</b></button></li>
+                 <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>Follow Back</b></button></li>
                <input type="hidden" name="userid" value="{{ $user->id }}" />
             </form>
             @else
@@ -56,7 +56,7 @@
                 @if (auth()->user()->isBlockedBy($user))
 
 
-                <button type="submit" class="list-group-item list-group-item-action" onclick="unblock({{$user->id}})"><span style="color: red">UnBlock</span></button>
+                <button type="submit" class="list-group-item list-group-item-action" onclick="unblock({{$user->id}})"><span style="color: red">Unblock</span></button>
             @else
             <form method="POST" action="{{Route('users.block')}}">
                 @csrf
@@ -84,8 +84,8 @@
        <div class="row float-start"  >
            <ul class="list-inline " >
                <li class="list-inline-item me-5"  ><span class="list-inline-item"><b>   {{$user->posts->count()}}</b></span> posts</li>
-               <li class="list-inline-item me-5"><button class="btn noHover"  type="button"><span class="list-inline-item"><b>{{$user->followers->count()}}</b></span> followers</button></li>
-               <li class="list-inline-item me-5"><button class="btn noHover" type="button"><span class="list-inline-item"><b>{{$user->following->count()}}</b></span> following</button></li>
+               <li class="list-inline-item me-5"><button class="btn noHover"  type="button"><span class="list-inline-item"><b>{{$user->followers->count()}}</b></span> Followers</button></li>
+               <li class="list-inline-item me-5"><button class="btn noHover" type="button"><span class="list-inline-item"><b>{{$user->following->count()}}</b></span> Following</button></li>
 
            </ul>
            </div>

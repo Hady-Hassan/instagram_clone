@@ -64,7 +64,7 @@
                                 @if(auth()->user()->isFollowing($post->user))
                                 <form class="list-inline-item me-3" method="POST" action="{{Route('users.unfollow')}}">
                                   @csrf
-                                <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>UnFollow</b></button></li>
+                                <li class="list-inline-item me-3"><button type="submit" class="btn btn-primary" style="color: white"><b>Unfollow</b></button></li>
                                 <input type="hidden" name="userid" value="{{ $post->user->id }}" />
                               </form>
                                 @else

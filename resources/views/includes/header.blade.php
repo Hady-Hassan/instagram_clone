@@ -146,7 +146,7 @@
 
                 <div class="row">
                   <!-- Slide -->
-                  <div id="first-carousel" class="carousel slide  w-100" data-bs-ride="false">
+                  <div id="first-carousel" class="carousel carousel-header slide  w-100" data-bs-ride="false">
                     <div class="first-carousel carousel-inner ">
 
                   </div>
@@ -172,7 +172,7 @@
                 <div class="row">
                    <div class="mt-3 text-center" >
                   <label class="btn btn-primary opacity-100 w-50  btn-sm">
-                    Select from computer <input type="file" id="file" name="media[]" multiple required>
+                    Select from computer <input type="file" id="file" name="media[]" multiple required hidden accept="image/*,video/*">
                   </label>
                 </div>
                 <div class="mt-3">
