@@ -14,32 +14,7 @@
     </div>
 
     <div class="col-md-8">
-        <!-- <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Action</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach( auth()->user()->blocked_users as $user )
-                <tr>
-                    <td>{{$user['id']}}</td>
-                    <td>{{$user['fullname']}}</td>
-                    <td><span>@</span>{{$user['username']}}</td>
-                    <td>
-                        <form method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-danger"> Unblock </button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table> -->
+       
 
 
         <table class="table table-borderless">
