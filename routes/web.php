@@ -74,6 +74,11 @@ Route::group(['middleware'=>'auth'],function(){
     // comments
     Route::post('/post/comment',[PostController::class,'makeComment'])->name('post.make_comment');
 
+    Route::get('/post/edit/{post}',[PostController::class,'edit'])->name('post.edit');
+    Route::put('/post/update/{id}',[PostController::class,'update'])->name('post.update');
+
+
+
     //posts
     Route::post('/post/like',[PostController::class,'makeLike'])->name('post.make_like');
     Route::post('/post/save',[PostController::class,'savePost'])->name('post.save_post');

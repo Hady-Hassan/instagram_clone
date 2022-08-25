@@ -145,7 +145,17 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+    
+        $post = Post::find($id);
+        if(auth()->user()->id==$post->user_id)
+        {
+            return view('pages.Editpost',['post'=>$post]);
+        }
+       else
+       {
+            return redirect()->back();
+       }
+
     }
 
     /**
@@ -157,7 +167,12 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        if(auth()->user()->id==$post->user_id)
+        {
+            $update =  Post::find($id)->update(['caption'=>$request->caption]);
+            return view('pages.post')->with('post',$post);
+        }
     }
 
     /**
