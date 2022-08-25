@@ -108,13 +108,28 @@ class PostController extends Controller
     public function show($username,$post)
     {
         $user = User::where('username',$username)->first();
+
+
+
         // get followed users id
         $hasAccess = auth()->user()->isFollowing($user);
             if($hasAccess || $user->id == auth()->user()->id){
                 // get the post by id   
             $post = Post::where('user_id',$user->id)->where('id',$post)->get()->first();
+
+            
             
             if($post){
+                $caption = $post->caption;
+                $caption = explode(' ',$caption);
+                for($i=0;$i<count($caption);$i++){
+                    if(str_contains($caption[$i],"#")){
+                        $caption[$i] = "<a href=".Route('tag.show',['tag'=>trim($caption[$i],"#")]).">".$caption[$i]."</a>";
+                    }
+                }
+                
+                $caption = implode(' ',$caption);
+                $post->caption = $caption;
                 return view('pages.post')->with('post',$post);
             }else{
                 return redirect()->back();
@@ -200,8 +215,8 @@ class PostController extends Controller
                 $content = "<small class='col-12  commenting'> <a href='" . Route('users.show',['user' => $insert->user->username]) . "'> <strong class='me-1'>".$insert->user->username."</strong> </a> ".$insert->content." </small>";
             }else {
                 return view('includes.comments_post')->with('comment',$insert);
-             }
-                return json_encode(['message'=>"add success","content"=> $content,"status"=>"success"]);
+            }
+                return with($content);
             }else{
                 return json_encode(['message'=>"add failed","status"=>"failed"]);
             }

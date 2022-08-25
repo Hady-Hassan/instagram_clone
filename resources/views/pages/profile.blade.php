@@ -29,7 +29,7 @@
                <li class="list-inline-item me-5"><button class="btn noHover" data-bs-toggle="modal" data-bs-target="#f2"><span class="list-inline-item"><b>{{auth()->user()->following->count()}}</b></span> following</button></li>
 
            </ul>
-           <div style="max-height: 500px;" class="modal fade" id="f1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div style="max-height: 500px; " class="modal fade" id="f1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                  <div class="modal-content">
                    <div class="modal-header text-center">
@@ -52,12 +52,22 @@
                                         <a class="link-dark" href="{{ Route('users.show',['user'=>$user->username]) }}"><h6 class="text-muted">{{$user->username}}</h6></a>
                                    </td>
                                    <td class="align-middle ">
-                                       <center><button class="btn btn-primary fw-bold  bg-gradient " onclick="removefollow({{$user->id}})"
+                                       <center>
+
+                                        <button class="btn btn-primary fw-bold  bg-gradient " onclick="removefollow({{$user->id}})"
                                                type="submit">
                                            Remove
                                            </button>
-                                       </center>
-                                   </td>
+
+
+                                    <form method="POST" action="{{Route('users.block')}}">
+                                        @csrf
+
+                                    <button type="submit" class="btn btn-danger fw-bold  bg-gradient " ><span>Block</span></button>
+                                    <input type="hidden" name="userid" value="{{$user->id }}" />
+
+                                </center>
+                            </td>
                                </tr>
                                @endforeach
 
@@ -69,7 +79,7 @@
                </div>
              </div>
 
-             <div style="max-height: 500px;" class="modal fade" id="f2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div style="max-height: 500px; " class="modal fade" id="f2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                  <div class="modal-content">
                    <div class="modal-header text-center">
@@ -94,6 +104,13 @@
                                                type="submit">
                                            Unfollow
                                            </button>
+
+                                           <form method="POST" action="{{Route('users.block')}}">
+                                               @csrf
+
+                                           <button type="submit" class="btn btn-danger fw-bold  bg-gradient " ><span>Block</span></button>
+                                           <input type="hidden" name="userid" value="{{$user->id }}" />
+
                                        </center>
                                    </td>
                                </tr>

@@ -206,7 +206,7 @@ class Usercontroller extends Controller
         if($request->ajax()){
             $remove = User_block::create([  'user_id' => auth()->user()->id  , 'target_id' => $request->userid]);
             $rem = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
-            $re = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+            $re = User_follow::where('user_id',$request->userid)->where('target_id' , auth()->user()->id)->delete();
 
             if(!$remove){
                 return ['message'=>"empty","status"=>"failed"];
@@ -216,7 +216,7 @@ class Usercontroller extends Controller
         }else{
             $remove = User_block::create([  'user_id' => auth()->user()->id  , 'target_id' => $request->userid]);
             $rem = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
-            $re = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
+            $re = User_follow::where('user_id',$request->userid)->where('target_id' , auth()->user()->id)->delete();
             if(!$remove){
                 return redirect()->back();
             }else{
