@@ -46,16 +46,16 @@ class DatabaseSeeder extends Seeder
 
         //Ahmed Hagag account
         \App\Models\User::create([
-            'fullname' =>'Hady Hassan' ,
-            'username' =>'Hady_Hassan' ,
-            'email' => 'hadyhassn5@gmail.com',
+            'fullname' =>'Ahmed Haggag' ,
+            'username' =>'Hego' ,
+            'email' => 'AhmedHaggag720@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt(1234), // password
             
-            'bio'=>'',
-            'website'=>'',
+            'bio'=>'Just Student',
+            'website'=>'www.Ahmed.com',
             'gender'=>'m',
-            'phone'=> '01284630902'
+            'phone'=> '01288339181'
         ]);         
         //Omar Abd El fatah account
         \App\Models\User::create([
