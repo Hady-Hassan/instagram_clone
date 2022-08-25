@@ -30,7 +30,7 @@
                <li class="list-inline-item me-5"><button class="btn noHover" data-bs-toggle="modal" data-bs-target="#f2"><span class="list-inline-item"><b>{{auth()->user()->following->count()}}</b></span> following</button></li>
 
            </ul>
-           <div style="max-height: 500px;" class="modal fade" id="f1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div style="max-height: 500px; " class="modal fade" id="f1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                  <div class="modal-content">
                    <div class="modal-header text-center">
@@ -80,7 +80,7 @@
                </div>
              </div>
 
-             <div style="max-height: 500px;" class="modal fade" id="f2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div style="max-height: 500px; " class="modal fade" id="f2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                  <div class="modal-content">
                    <div class="modal-header text-center">
@@ -111,7 +111,7 @@
 
                                            <button type="submit" class="btn btn-danger fw-bold  bg-gradient " ><span>Block</span></button>
                                            <input type="hidden" name="userid" value="{{$user->id }}" />
-                                           
+
                                        </center>
                                    </td>
                                </tr>
