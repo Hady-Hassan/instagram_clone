@@ -1,9 +1,32 @@
 
 # Instagram Clone
 
-we are doing a Instagram clone for ITI Trainning
+we are doing an Instagram clone for ITI Trainning
 
 
+## Installation
+
+write this codes in the terminal to run the project 
+
+make sure to turn SQL on and have a database called `instagram`
+
+```bash
+    composer install
+
+    npm install
+
+    npm run dev
+
+    php artisan storage:link
+
+    php artisan migrate:fresh
+
+    php artisan db:seed
+
+    php artisan serve
+
+```
+    
 ## Contributers
 
 Hady Hassan
