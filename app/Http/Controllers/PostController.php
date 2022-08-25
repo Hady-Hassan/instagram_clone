@@ -109,16 +109,12 @@ class PostController extends Controller
     {
         $user = User::where('username',$username)->first();
 
-
-
         // get followed users id
         $hasAccess = auth()->user()->isFollowing($user);
-            if($hasAccess || $user->id == auth()->user()->id){
+            if($hasAccess || $username == auth()->user()->username){
                 // get the post by id   
             $post = Post::where('user_id',$user->id)->where('id',$post)->get()->first();
 
-            
-            
             if($post){
                 $caption = $post->caption;
                 $caption = explode(' ',$caption);
@@ -136,6 +132,7 @@ class PostController extends Controller
             }
 
         }else{
+
             return redirect()->back();
         }
     }
