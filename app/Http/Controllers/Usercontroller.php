@@ -24,7 +24,7 @@ class Usercontroller extends Controller
             return redirect()->route('users.profile');
         }
 
-        
+
         $user=User::where('username' , $username)->get()->first();
         if(! $user->isBlockedBy(auth()->user())){
         return view("pages.gprof")->with('user' , $user);
@@ -119,7 +119,7 @@ class Usercontroller extends Controller
 
         if($request->ajax()){
             $remove = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
-            
+
             $posts = auth()->user()->savedposts()->filter(function($post) use($request){
                 return $post->post->user_id == $request->userid;
             });
@@ -135,7 +135,7 @@ class Usercontroller extends Controller
             }
         }else{
             $remove = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
-            
+
             $posts = auth()->user()->savedposts()->filter(function($post) use($request){
                 return $post->post->user_id == $request->userid;
             });
@@ -146,7 +146,7 @@ class Usercontroller extends Controller
             if(!$remove){
                 return redirect()->back();
             }else{
-                return redirect()->route('home');
+                return redirect()->back();
             }
 
         }
@@ -214,7 +214,7 @@ class Usercontroller extends Controller
             $remove = User_block::create([  'user_id' => auth()->user()->id  , 'target_id' => $request->userid]);
             $rem = User_follow::where('target_id',$request->userid)->where('user_id' , auth()->user()->id)->delete();
             $re = User_follow::where('user_id',$request->userid)->where('target_id' , auth()->user()->id)->delete();
-            
+
             $posts = auth()->user()->savedposts()->filter(function($post) use($request){
                 return $post->post->user_id == $request->userid;
             });
