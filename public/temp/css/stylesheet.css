@@ -416,3 +416,6 @@ small {
   a{
     text-decoration: none!important;
   }
+  .ajax-loading{
+    display: none;
+  }

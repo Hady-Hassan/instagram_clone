@@ -1,9 +1,4 @@
 
-@extends('layouts.default')
-@section('page_title', 'Home')
-
-@section('content')
-<div id="wrapper">
 @foreach($posts as $post)
 
 <div class="card w-50 my-4 m-auto">   
@@ -182,15 +177,6 @@
         </div>
         </div>
       </div>
-  
+
 
 @endforeach
-  </div>  
-  <div class="container">
-     <div class="ajax-loading  text-center" ><img src="{{asset('temp/assets/loading.gif')}}" /></div>
-  </div>
-@endsection
-
-@section('more_js')
-  @include('scripts.ajax_posts_load_more')
-@endsection

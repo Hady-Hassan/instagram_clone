@@ -278,6 +278,8 @@
     }
   });
 </script>
+@yield('more_js')
+
 </body>
 
 </html>

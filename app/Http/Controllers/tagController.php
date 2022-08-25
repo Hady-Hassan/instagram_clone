@@ -43,14 +43,14 @@ class tagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($tag)
+    public function show(Request $request , $tag)
     {
         
         // get followed users id
         $users = auth()->user()->following()->pluck('target_id');
         $users->push(auth()->user()->id);
         // get the post by id   
-        $posts = Post::whereIn('user_id',$users)->where('caption', 'like', '%#'.$tag.'%')->get();
+        $posts = Post::where('caption', 'like', '%#'.$tag.'%')->get();
 
         if($posts->isEmpty()){
             return redirect()->route('home');
@@ -58,7 +58,7 @@ class tagController extends Controller
             return view('pages.tag')->with('posts',$posts)->with('tag',$tag);
         }
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

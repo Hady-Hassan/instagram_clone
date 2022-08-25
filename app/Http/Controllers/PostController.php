@@ -12,14 +12,14 @@ use App\Models\Post_like;
 use App\Models\User_post_save;
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         
         // get followed users id
         $users = auth()->user()->following()->pluck('target_id');
         
         // get followed users posts by id
-        $posts = Post::whereIn('user_id',$users)->get()->map(function($post){
+        $posts = Post::whereIn('user_id',$users)->paginate(1)->map(function($post){
             $caption = $post['caption'];
             $caption = explode(' ',$caption);
             for($i=0;$i<count($caption);$i++){
@@ -32,7 +32,10 @@ class PostController extends Controller
             $post['caption'] = $caption;
             return $post;
         });
-   
+        
+        if ($request->ajax()) {
+            return view('pages.posts_load')->with('posts',$posts);
+        }
         return view('pages.home')->with('posts',$posts);
     }
 
