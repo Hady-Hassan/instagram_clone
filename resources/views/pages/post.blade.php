@@ -79,7 +79,7 @@
                                 @endif
                           @else
                                 <form method="GET" action="{{Route('post.edit',['post'=>$post->id])}}">
-                                <button type="submit" style="border: none; background-color: white" data-bs-toggle="modal" data-bs-target="#f2"><svg  xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                <button type="submit" style="border: none; background-color: transparent" data-bs-toggle="modal" data-bs-target="#f2"><svg  xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
   <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
 </svg></button>
                                 </form>   
@@ -127,7 +127,7 @@
                       </div>
                     </div>
                     <div class="row text-muted mb-2">
-                      <div class="col-2 ms-auto" style="font-size: 14px">{{ $post->created_at->diffForHumans(); }}</div>
+                      <div class="col-2 ms-auto" style="font-size: 12px">{{ $post->created_at->diffForHumans(); }}</div>
                     </div>
                       </div>
                       <!-- End Caption -->
