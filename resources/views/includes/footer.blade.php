@@ -9,7 +9,7 @@
   const List = document.querySelector(".first-carousel");
   const view_comments = document.querySelector(".view_comments");
   const comment_section = document.querySelector(".comment_section");
-  const comment_count = document.querySelector(".view_comments").innerText.match(/\d/g).join("");
+  // const comment_count = document.querySelector(".view_comments").innerText.match(/\d/g).join("");
 
   //Comment Handler
   //   view_comments.onclick = evt =>
@@ -123,6 +123,7 @@
       type: "POST",
       data: {
         post_id: post_id,
+        {{ Route::is('home') ? "type:true," : " " }}
         comment: values[0]['value'],
         _token: "{{csrf_token()}}"
       },

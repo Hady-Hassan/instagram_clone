@@ -185,8 +185,8 @@ class PostController extends Controller
                 $content = "<small class='col-12  commenting'> <a href='" . Route('users.show',['user' => $insert->user->username]) . "'> <strong class='me-1'>".$insert->user->username."</strong> </a> ".$insert->content." </small>";
             }else {
                 return view('includes.comments_post')->with('comment',$insert);
-             }
-                return json_encode(['message'=>"add success","content"=> $content,"status"=>"success"]);
+            }
+                return with($content);
             }else{
                 return json_encode(['message'=>"add failed","status"=>"failed"]);
             }
