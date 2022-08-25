@@ -130,7 +130,7 @@
        <div class="row  float-start">
         <div class="col-12  text-start">
             <b>{{auth()->user()->username}}</b>
-            
+
         </div>
             <div class="col-12  text-start">
                 <p style="text-align: left;">{{auth()->user()->bio}}</p>
@@ -228,5 +228,5 @@
 
 </div>
 
-
+{{-- ... --}}
 @endsection

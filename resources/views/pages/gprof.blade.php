@@ -100,7 +100,7 @@
             <div class="col-12  text-start">
                 <a class="text-start" href="{{$user->website}}">{{$user->website}}</a>
             </div>
-        </div>
+        
 
 
 
