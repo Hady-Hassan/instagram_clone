@@ -48,9 +48,9 @@ class tagController extends Controller
         
         // get followed users id
         $users = auth()->user()->following()->pluck('target_id');
-
+        $users->push(auth()->user()->id);
         // get the post by id   
-        $posts = Post::whereIn('user_id',$users)->orWhere('user_id',auth()->user()->id)->where('caption', 'like', '%#'.$tag.'%')->get();
+        $posts = Post::whereIn('user_id',$users)->where('caption', 'like', '%#'.$tag.'%')->get();
 
         if($posts->isEmpty()){
             return redirect()->route('home');
