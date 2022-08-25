@@ -59,16 +59,16 @@ class DatabaseSeeder extends Seeder
         ]);
         //Omar Abd El fatah account
         \App\Models\User::create([
-            'fullname' =>'Hady Hassan' ,
-            'username' =>'Hady_Hassan' ,
-            'email' => 'hadyhassn5@gmail.com',
+            'fullname' =>'Omar Abd El fatah' ,
+            'username' =>'omar.abd.el.fattah' ,
+            'email' => 'omar.mero200125@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt(1234), // password
 
-            'bio'=>'',
+            'bio'=>'فاطمة #كشري',
             'website'=>'',
             'gender'=>'m',
-            'phone'=> '01284630902'
+            'phone'=> '01014513476'
          ]);
 
         //Abdelrahman Ahmed account
