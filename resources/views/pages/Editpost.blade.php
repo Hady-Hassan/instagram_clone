@@ -93,9 +93,7 @@
                     <form method="Post" action="{{route('post.update',['id'=>$post->id])}}">
                         @method('PUT')
                         @csrf
-                        <textarea name="caption" id="" cols="80" rows="10">
-                           {{ $post->caption}}
-                        </textarea>
+                        <textarea name="caption" id="" cols="80" rows="10">{{ $post->caption}}</textarea>
                         <button class="btn btn primary" type="submit">
                                         Save
                         </button>
