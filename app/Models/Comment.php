@@ -27,5 +27,8 @@ class Comment extends Model
         return $this->hasMany(Comment_like::class);
     }
 
-    
+    public function isLiked(){
+        return $this->likes()->where('user_id',  auth()->id())->exists();
+
+    }
 }

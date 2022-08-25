@@ -53,16 +53,7 @@
                 </div>
                 @endif
 
-                <!-- @if(session()->has('success'))
-                <script>
-                    Swal.fire(
-                        'Good job!',
-                        " {{ session()->get('success') }}",
-                        'success'
-                    )
-                </script>
-                @endif -->
-
+            
 
                 <div class="mb-3 row">
                     <label for="fname" class="col-sm-2 col-form-label  ">Name</label>
@@ -114,10 +105,7 @@
                 </div>
 
                 <div class="mb-3 row">
-                    <!-- <label for="phonenumber" class="col-sm-2 col-form-label  ">Phone Number</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="phonenumber" name="phonenumber" value="{{ $user->phone }}">
-                        </div> -->
+              
                     <label class="form-label col-sm-2 col-form-label" for="customFile">Change Image</label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control" id="customFile" name="avatar" />
@@ -168,19 +156,7 @@
         @endif
         </center>
     </div>
-    <!-- 
-        <form class="bg-white border py-4 px-5" method="POST">
-            <div class="mb-3 row">
-                <label for="email" class="col-sm-2 col-form-label  ">Email</label>
-
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="email" name="email" value="AhmedHaggag720@gmail.com">
-                </div>
-                <div class="col-sm-2 mt-auto mb-auto">
-                    <span class="badge bg-dark">Verified</span>
-                </div>
-            </div>
-        </form> -->
+ 
 </div>
 </div>
 </div>

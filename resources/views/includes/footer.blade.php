@@ -9,26 +9,7 @@
   const List = document.querySelector(".first-carousel");
   const view_comments = document.querySelector(".view_comments");
   const comment_section = document.querySelector(".comment_section");
-  // const comment_count = document.querySelector(".view_comments").innerText.match(/\d/g).join("");
 
-  //Comment Handler
-  //   view_comments.onclick = evt =>
-  //   {
-  //     if(evt.target.innerText.includes('all'))
-  //     {
-  //         get_all_comments(comment_section.attribute('data-id'));
-  //       comment_section.style.display = 'flex';
-  //       evt.target.innerText = "View less comments...";
-  //       return;
-  //     }
-  //     if(evt.target.innerText.includes('less'))
-  //     {
-  //       comment_section.style.display = 'none';
-  //       evt.target.innerText = `View all ${comment_count} comments..`;
-  //       return;
-  //     }
-
-  //   }
 
   const toggle = (event) => {
 
@@ -36,9 +17,15 @@
     const inputs = document.querySelectorAll('input');
     const action = event.dataset.action;
     const postid = event.dataset.postid;
+    const commentid = event.dataset.commentid;
     if (action == 'like') {
       like(postid);
-    } else {
+    } 
+    else if (action == 'like_comment')
+    {
+      likeComment(postid,commentid);
+    }
+    else {
       save(postid);
     }
     for (let i = 0; i < inputs.length; i++) {
@@ -98,20 +85,6 @@
   }
 </script>
 <script>
-  // function get_all_comments(post_id){
-  //     $.ajax({
-  //         url: "{{route('get_all_comments')}}",
-  //         type: "POST",
-  //         data: {
-  //             post_id: post_id,
-  //             _token: "{{csrf_token()}}"
-  //         },
-  //         success: function(data){
-  //             console.log(data);
-  //             // $('.comment_section').html(data);
-  //         }
-  //     });
-  // }
 
   function test() {
     console.log("works");
@@ -153,6 +126,23 @@
       type: "POST",
       data: {
         post_id: postid,
+        _token: "{{csrf_token()}}"
+      },
+      success: function(data) {
+        data = $.parseJSON(data);
+        status = data.status;
+        message = data.error;
+      }
+    });
+
+  }
+  function likeComment(postid,commentid) {
+    $.ajax({
+      url: "{{route('post.make_like_comment')}}",
+      type: "POST",
+      data: {
+        post_id: postid,
+        comment_id: commentid,
         _token: "{{csrf_token()}}"
       },
       success: function(data) {
@@ -278,6 +268,8 @@
     }
   });
 </script>
+@yield('more_js')
+
 </body>
 
 </html>

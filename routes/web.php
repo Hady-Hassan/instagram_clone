@@ -33,16 +33,10 @@ Route::group(['middleware'=>'auth'],function(){
 
 
 
-    // Route::get('/user',[UserController::class,'index'])->name('users.index');
-    // Route::get('/user/create',[UserController::class,'create'])->name('users.create')->middleware(['auth']);
-    // Route::post('/user',[UserController::class,'store'])->name('users.store')->middleware(['auth']);
     Route::post('/',[PostController::class,'store'])->name('posts.store');
 
      Route::get('/user/{user}',[UserController::class,'gprof'])->name('users.show');
-    // Route::get('/user/{user}/edit',[UserController::class,'edit'])->where('user', '[0-9]+')->name('users.edit')->middleware(['auth']);
-    // Route::put('/user/{user}',[UserController::class,'update'])->where('user', '[0-9]+')->name('users.update')->middleware(['auth']);
-    // Route::delete('/user/{user}',[UserController::class,'destroy'])->where('user', '[0-9]+')->name('users.destroy')->middleware(['auth']);
-
+  
 
 
     Route::get('/user/{user}/post/{post}',[PostController::class,'show'])->where('post', '[0-9]+')->name('post.show');
@@ -73,7 +67,7 @@ Route::group(['middleware'=>'auth'],function(){
 
     // comments
     Route::post('/post/comment',[PostController::class,'makeComment'])->name('post.make_comment');
-
+    Route::post('/comment/like',[PostController::class,'makeLikeComment'])->name('post.make_like_comment');
     Route::get('/post/edit/{post}',[PostController::class,'edit'])->name('post.edit');
     Route::put('/post/update/{id}',[PostController::class,'update'])->name('post.update');
 
